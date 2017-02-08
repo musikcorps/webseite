@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -e
+
+cd "$(dirname "$0")/.."
+source .env
+
+# set up dependencies
+composer install
+
+# install Wordpress
+vendor/bin/wp core install \
+  --url="$BLOG_URL" --title="$BLOG_TITLE" \
+  --admin_name="$ADMIN_NAME" --admin_password="$ADMIN_PASSWORD" \
+  --admin_email="$ADMIN_EMAIL"
+
+echo
+echo "All set! Set DocumentRoot to html and visit your site at $BLOG_URL"
+

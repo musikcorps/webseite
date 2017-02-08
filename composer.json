@@ -26,19 +26,22 @@
   ],
   "require": {
     "php": ">=7.0",
-    "johnpbloch/wordpress": "*",
     "composer/installers": "v1.0.12",
     "vlucas/phpdotenv": "1.0.9",
+    "oscarotero/env": "^1.0",
 
-    "wpackagist-plugin/google-analytics-dashboard-for-wp": "*",
-    "wpackagist-theme/constructzine-lite": "*"
+    "johnpbloch/wordpress": ">=4.7.2",
+    "wp-cli/wp-cli" : "~0.22",
+
+    "wpackagist-plugin/wp-native-dashboard": "*",
+    "wpackagist-plugin/google-analytics-dashboard-for-wp": "*"
   },
   "extra": {
     "installer-paths": {
-      "htdocs/wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
-      "htdocs/wp-content/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
-      "htdocs/wp-content/themes/{$name}": ["type:wordpress-theme"]
+      "html/wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
+      "html/wp-content/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
+      "html/wp-content/themes/{$name}": ["type:wordpress-theme"]
     },
-    "wordpress-install-dir": "html/wordpress"
+    "wordpress-install-dir": "html/wp"
   }
 }

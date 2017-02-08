@@ -1,0 +1,19 @@
+# wp-contentlication
+html/wp-content/plugins/*
+!html/wp-content/plugins/.gitkeep
+html/wp-content/mu-plugins/*/
+html/wp-content/upgrade
+html/wp-content/uploads/*
+!html/wp-content/uploads/.gitkeep
+html/wp-content/languages/
+
+# WordPress
+html/wp
+
+# Dotenv
+.env
+.env.*
+!.env.example
+
+# Composer
+vendor/*

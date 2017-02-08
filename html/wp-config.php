@@ -4,7 +4,7 @@
 require_once(dirname(__DIR__) . '/vendor/autoload.php');
 
 $root_dir = dirname(__DIR__);
-$webroot_dir = $root_dir . '/htdocs';
+$webroot_dir = $root_dir . '/html';
 
 /**
  * Use Dotenv to set required environment variables and load .env file in root
@@ -32,11 +32,17 @@ define('DB_COLLATE', '');
 $table_prefix = getenv('DB_PREFIX') ? getenv('DB_PREFIX') : 'wp_';
 
 /**
+ * URLs
+ */
+define('WP_HOME', getenv('BLOG_URL'));
+define('WP_SITEURL', WP_HOME . "/wp");
+
+/**
  * Content Directory is moved out of the wp-core.
  */
 define('CONTENT_DIR', '/wp-content');
 define('WP_CONTENT_DIR', $webroot_dir . CONTENT_DIR);
-define('WP_CONTENT_URL', CONTENT_DIR);
+define('WP_CONTENT_URL', WP_HOME . CONTENT_DIR);
 
 /**
  * Don't allow any other write method than direct
@@ -60,8 +66,7 @@ define('NONCE_SALT',       getenv('NONCE_SALT'));
  * SSL ADMIN
  * Allow overriding it in dev environment so we can use phantomjs to test logging in.
  */
-defined('FORCE_SSL_ADMIN') or define('FORCE_SSL_ADMIN', true);
-
+define('FORCE_SSL_ADMIN', getenv('FORCE_SSL_ADMIN') === false ? true : getenv('FORCE_SSL_ADMIN') === "true");
 
 /**
  * Various Settings
@@ -95,7 +100,7 @@ ini_set('log_errors', 'On');
 
 /** Absolute path to the WordPress directory. */
 if (!defined('ABSPATH')) {
-  define('ABSPATH', $webroot_dir . '/wordpress/');
+  define('ABSPATH', $webroot_dir . '/wp/');
 }
 
 require_once(ABSPATH . 'wp-settings.php');
