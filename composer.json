@@ -1,0 +1,44 @@
+{
+  "name": "musikcorps/wordpress",
+  "description": "Musikcorps Niedernberg WordPress instance template",
+  "authors": [
+    {
+      "name": "Johannes Lauinger",
+      "email": "johannes@lauinger-it.de"
+    }
+  ],
+  "autoload": {
+    "psr-0": {"WordPress\\Installer": "script"}
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "WordPress\\Installer::symlinkWPContent"
+    ],
+    "post-update-cmd": [
+      "WordPress\\Installer::symlinkWPContent"
+    ]
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "johnpbloch/wordpress": "*",
+    "composer/installers": "v1.0.12",
+    "vlucas/phpdotenv": "1.0.9",
+
+    "wpackagist-plugin/google-analytics-dashboard-for-wp": "*",
+    "wpackagist-theme/constructzine-lite": "*"
+  },
+  "extra": {
+    "installer-paths": {
+      "htdocs/wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
+      "htdocs/wp-content/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
+      "htdocs/wp-content/themes/{$name}": ["type:wordpress-theme"]
+    },
+    "wordpress-install-dir": "html/wordpress"
+  }
+}
