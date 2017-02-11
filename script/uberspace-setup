@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# setup symlinks for this repo to work on uberspace.de hosts
+# assumes the repo to be cloned in /var/www/virtual/$USER, yielding a repo path
+# of /var/www/virtual/$USER/$REPO
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+REPO=$(basename $PWD)
+
+ln -s /var/www/virtual/$USER/$REPO $HOME/
+rmdir /var/www/virtual/$USER/html
+ln -s /var/www/virtual/$USER/$REPO/html /var/www/virtual/USER/
+
+echo "Symlinked virtual html directory. Access the repository checkout at ~/$REPO"

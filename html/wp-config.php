@@ -17,7 +17,6 @@ if (file_exists($root_dir . '/.env')) {
   Dotenv::load($root_dir);
 }
 
-
 /**
  * DB settings
  * You can find the credentials by running $ wp-list-env
@@ -69,17 +68,15 @@ define('NONCE_SALT',       getenv('NONCE_SALT'));
 define('FORCE_SSL_ADMIN', getenv('FORCE_SSL_ADMIN') === false ? true : getenv('FORCE_SSL_ADMIN') === "true");
 
 /**
- * Various Settings
+ * Secure file edits against malware
  */
 define('DISALLOW_FILE_EDIT', true); /* this disables the theme/plugin file editor */
-
 
 /*
  * Auto activated plugins
  * These plugins will be activated automatically when this is installed
  */
 define('WP_AUTO_ACTIVATE_PLUGINS',"google-analytics-dashboard-for-wp");
-
 
 /**
  * For developers: WordPress debugging mode.
@@ -96,7 +93,6 @@ define('SCRIPT_DEBUG', false);
  * Log error data but don't show it in the frontend.
  */
 ini_set('log_errors', 'On');
-
 
 /** Absolute path to the WordPress directory. */
 if (!defined('ABSPATH')) {
