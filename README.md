@@ -45,6 +45,8 @@ Adjust the webserver's document root settings by some symlinks. This is done by 
 script/uberspace-setup
 ```
 
+Now proceed with the regular deployment.
+
 
 ## License
 
