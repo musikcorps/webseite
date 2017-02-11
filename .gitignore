@@ -12,8 +12,8 @@ html/wp
 
 # Dotenv
 .env
-.env.*
-!.env.example
+config/env*
+!config/env.example
 
 # Composer
 vendor/*

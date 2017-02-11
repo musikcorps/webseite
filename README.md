@@ -11,13 +11,13 @@
 Setup environment config:
 
 ```shell
-cd config
-cp env.example env
+cp config/env.example config/env
+ln -s config/env .env
 ```
 
 Edit `config/env` according to your site. Then just run:
 
-```shell
+```
 script/bootstrap
 ```
 
@@ -26,6 +26,23 @@ The script prints out the address of your blog. Point a webserver with PHP suppo
 ```
 composer install
 vendor/bin/wp core install
+```
+
+
+## Deployment on uberspace.de hosts
+
+Clone the repository to a new folder within `/var/www/virtual/$USER`:
+
+```
+cd ~/html/..
+git clone https://github.com/musikcorps/wordpress
+cd wordpress
+```
+
+Adjust the webserver's document root settings by some symlinks. This is done by executing
+
+```
+script/uberspace-setup
 ```
 
 
