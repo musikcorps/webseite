@@ -6,8 +6,11 @@ services:
   - docker
   - docker-compose
 
+install:
+  - docker-compose build
+
 before_script:
-  - docker-compose up --build -d
+  - docker-compose up -d
 
 script:
   - docker ps | grep -q wordpress
