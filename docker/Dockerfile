@@ -1,5 +1,5 @@
-# Dockerfile to build a Wordpress-container with Apache
-# using a directory layout similar to uberspace.de hosts
+# Dockerfile for Musikcorps Niedernberg e.V. website
+# based on wordpress-uberspace
 
 FROM php:7.1-apache
 MAINTAINER Johannes Lauinger <johannes@lauinger-it.de>

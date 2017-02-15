@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: ./docker/Dockerfile
-    image: wordpress-uberspace:latest
+    image: musikcorps:latest
     links:
       - database:mysql
     ports:
