@@ -3,7 +3,7 @@
 # Wait for MySQL to become available
 echo "Waiting for database at host mysql to become ready..."
 while true; do
-  mysql -h mysql -u root -pa -e "select 1" 2>&1 >/dev/null && break
+  mysql -h mysql -u root -pa -e "select 1" >/dev/null 2>&1 && break
   sleep 1
 done
 
