@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+
+cd "$(dirname "$0")/.."
+source .env
+
+# set up dependencies
+composer install
+
+echo
+echo "All set! Set DocumentRoot to html and visit your site at $BLOG_URL"
+

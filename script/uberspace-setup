@@ -12,6 +12,6 @@ REPO=$(basename $PWD)
 
 ln -s /var/www/virtual/$USER/$REPO $HOME/
 rmdir /var/www/virtual/$USER/html
-ln -s /var/www/virtual/$USER/$REPO/html /var/www/virtual/USER/
+ln -s /var/www/virtual/$USER/$REPO/html /var/www/virtual/$USER/
 
 echo "Symlinked virtual html directory. Access the repository checkout at ~/$REPO"
