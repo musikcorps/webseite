@@ -38,6 +38,7 @@ COPY docker/check-and-setup.sh ./
 COPY script ./script/
 COPY config ./config/
 COPY composer.json ./
+COPY tests ./tests/
 COPY html ./html/
 
 
