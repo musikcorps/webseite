@@ -21,7 +21,8 @@ script:
   - docker-compose exec wordpress script/test
 
 after_script:
-  - docker-compose logs
+  - docker-compose logs database
+  - docker-compose logs wordpress
   - docker-compose down
 
 notifications:
