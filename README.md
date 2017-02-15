@@ -8,12 +8,6 @@
 
 ## Local deployment
 
-Setup environment config:
-
-```shell
-ln -s config/docker.env .env
-```
-
 Edit `config/docker.env` according to your site. Then just run:
 
 ```
