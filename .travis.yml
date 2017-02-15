@@ -15,7 +15,8 @@ before_script:
 script:
   - docker ps | grep -q wordpress
   - bash -c "for i in {1..30}; do curl localhost:8000 >/dev/null 2>&1 && break || sleep 5; done"
-  - curl localhost:8000 | grep -q "<title>My Awesome Blog"
+  - curl localhost:8000 2>/dev/null | tac | tac | grep -q "<title>My Awesome Blog"
+  - docker-compose run wordpress script/test
 
 after_script:
   - docker-compose logs

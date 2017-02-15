@@ -36,6 +36,9 @@
     "wpackagist-plugin/wp-native-dashboard": "*",
     "wpackagist-plugin/google-analytics-dashboard-for-wp": "*"
   },
+  "require-dev": {
+    "phpunit/phpunit": "*"
+  },
   "extra": {
     "installer-paths": {
       "html/wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
