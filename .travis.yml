@@ -6,11 +6,12 @@ services:
   - docker
   - docker-compose
 
-install:
-  - docker-compose build
+before_script:
+  - docker-compose up --build -d
 
 script:
-  - docker-compose up -d
   - docker ps | grep -q wordpress
   - curl localhost:8000
-  - docker-compose stop
+
+after_script:
+  - docker-compose down
