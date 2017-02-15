@@ -7,8 +7,10 @@ services:
   - docker-compose
 
 install:
-  - docker-compose up --build
+  - docker-compose build
 
 script:
+  - docker-compose up -d
   - docker ps | grep -q wordpress
   - curl localhost:8000
+  - docker-compose stop
