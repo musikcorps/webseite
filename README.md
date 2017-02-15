@@ -8,6 +8,13 @@
 
 ## Local deployment
 
+You will need Docker and Docker Compose:
+
+```
+sudo pacman -S docker docker-compose
+sudo systemctl start docker
+```
+
 Edit `config/docker.env` according to your site. Then just run:
 
 ```
