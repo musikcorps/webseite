@@ -1,4 +1,8 @@
+# Dockerfile to build a Wordpress-container with Apache
+# using a directory layout similar to uberspace.de hosts
+
 FROM php:7.1-apache
+MAINTAINER Johannes Lauinger <johannes@lauinger-it.de>
 
 
 RUN apt-get clean && apt-get -y update && apt-get install -y git subversion unzip sudo mysql-client

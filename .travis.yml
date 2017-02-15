@@ -1,0 +1,14 @@
+language: php
+php:
+  - 7.1
+
+services:
+  - docker
+  - docker-compose
+
+install:
+  - docker-compose up --build
+
+script:
+  - docker ps | grep -q wordpress
+  - curl localhost:8000
