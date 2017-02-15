@@ -1,9 +1,6 @@
-# Wordpress project layout
+# Musikcorps Niedernberg e.V. Website
 
-## Inspired by:
- * [roots/bedrock](https://github.com/roots/bedrock)
- * [johnpbloch/wordpress](https://github.com/johnpbloch/wordpress)
- * [Seravo/wordpress](https://github.com/Seravo/wordpress)
+Wordpress project for plugins and design of the Musikcorps Niedernberg e.V. website www.musikcorps-niedernberg.de
 
 
 ## Local deployment

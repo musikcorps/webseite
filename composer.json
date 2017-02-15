@@ -1,6 +1,6 @@
 {
-  "name": "musikcorps/wordpress",
-  "description": "Musikcorps Niedernberg WordPress instance template",
+  "name": "musikcorps/webseite",
+  "description": "Musikcorps Niedernberg website",
   "authors": [
     {
       "name": "Johannes Lauinger",
