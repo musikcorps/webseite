@@ -6,27 +6,23 @@
  * [Seravo/wordpress](https://github.com/Seravo/wordpress)
 
 
-## Deployment
+## Local deployment
 
 Setup environment config:
 
 ```shell
-cp config/env.example config/env
-ln -s config/env .env
+ln -s config/docker.env .env
 ```
 
-Edit `config/env` according to your site. Then just run:
+Edit `config/docker.env` according to your site. Then just run:
 
 ```
-script/bootstrap
+docker-compose up
 ```
 
-The script prints out the address of your blog. Point a webserver with PHP support to the html folder and visit your site. The `bootstrap` script does the following, which you can also run manually:
+This will build the Docker-container using the Dockerfile in the docker directory and start two containers. After a short time, you should be able to visit your new Wordpress site at http://localhost:8000/
 
-```
-composer install
-vendor/bin/wp core install
-```
+The container models some aspects (directory structure) of Uberspace hosts and ensures development is done in an environment similar to the deploy target.
 
 
 ## Deployment on uberspace.de hosts
@@ -45,7 +41,20 @@ Adjust the webserver's document root settings by some symlinks. This is done by 
 script/uberspace-setup
 ```
 
-Now proceed with the regular deployment.
+Now create a suitable config file:
+
+```
+cp config/env.example config/production.env
+ln -s config/production.env .env
+```
+
+Install dependencies and setup Wordpress:
+
+```
+script/bootstrap
+```
+
+The website should now be accessible at your Uberspace.
 
 
 ## License
