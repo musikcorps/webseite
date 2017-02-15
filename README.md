@@ -36,7 +36,7 @@ curl -sS https://getcomposer.org/installer | php -- --filename=composer --instal
 Clone the repository to a new folder within `/var/www/virtual/$USER`:
 
 ```
-cd ~/html/..
+cd $(readlink html)/..
 git clone https://github.com/musikcorps/webseite
 cd webseite
 ```
