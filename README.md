@@ -1,5 +1,7 @@
 # Musikcorps Niedernberg e.V. Website
 
+[![Build Status](https://travis-ci.org/musikcorps/webseite.svg?branch=master)](https://travis-ci.org/musikcorps/webseite)
+
 Wordpress project for plugins and design of the Musikcorps Niedernberg e.V. website www.musikcorps-niedernberg.de
 
 
