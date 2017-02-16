@@ -1,9 +1,8 @@
 # wp-content stuff
 html/wp-content/themes/
 !html/wp-content/themes/musikcorps-2017/
-html/wp-content/plugins/*
-!html/wp-content/plugins/.gitkeep
 html/wp-content/mu-plugins/*/
+html/wp-content/plugins/
 html/wp-content/languages/
 html/wp-content/uploads/
 
