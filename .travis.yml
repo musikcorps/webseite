@@ -8,10 +8,8 @@ services:
   - docker
   - docker-compose
 
-install:
-  - docker-compose build
-
 before_script:
+  - docker-compose build
   - docker-compose up -d
 
 script:
