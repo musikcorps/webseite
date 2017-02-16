@@ -110,6 +110,12 @@ function wp_install( $blog_title, $user_name, $user_email, $public, $deprecated 
 function wp_install_defaults( $user_id ) {
   global $wpdb, $wp_rewrite, $current_site, $table_prefix;
 
+  update_option( 'template', 'musikcorps-2017' );
+  update_option( 'stylesheet', 'musikcorps-2017' );
+
+  update_option( 'show_on_front', 'page' );
+  update_option( 'page_on_front', '1' );
+
   /** @see wp-admin/options-general.php */
 
   update_option( 'timezone_string', 'Europe/Berlin' );
@@ -142,7 +148,7 @@ function wp_install_defaults( $user_id ) {
 
 
   // Default category
-  $cat_name = __('Unkategorisiert');
+  /*$cat_name = __('Unkategorisiert');
   $cat_slug = sanitize_title(_x('Unkategorisiert', 'Standardkategorie'));
 
   if ( global_terms_enabled() ) {
@@ -161,14 +167,14 @@ function wp_install_defaults( $user_id ) {
   $cat_tt_id = $wpdb->insert_id;
 
   // First post
-  $now = current_time( 'mysql' );
-  $now_gmt = current_time( 'mysql', 1 );
+  */$now = current_time( 'mysql' );
+  $now_gmt = current_time( 'mysql', 1 );/*
   $first_post_guid = get_option( 'home' ) . '/?p=1';
 
   $first_post = get_site_option( 'first_post' );
 
   if ( ! $first_post ) {
-    $first_post = __( 'Welcome to your blog. This is your first post. Edit or delete it, then start blogging!' );
+    $first_post = __( 'Dies ist der erste Blogbeitrag. Du kannst ihn bearbeiten oder löschen.' );
   }
 
   $wpdb->insert( $wpdb->posts, array(
@@ -177,9 +183,8 @@ function wp_install_defaults( $user_id ) {
     'post_date_gmt' => $now_gmt,
     'post_content' => $first_post,
     'post_excerpt' => '',
-    'post_title' => __('Hello world!'),
-    /* translators: Default post slug */
-    'post_name' => sanitize_title( _x('hello-world', 'Default post slug') ),
+    'post_title' => __('Hallo Welt!'),
+    'post_name' => sanitize_title( _x('hallo-welt', 'Hallo Welt Slug') ),
     'post_modified' => $now,
     'post_modified_gmt' => $now_gmt,
     'guid' => $first_post_guid,
@@ -188,10 +193,10 @@ function wp_install_defaults( $user_id ) {
     'pinged' => '',
     'post_content_filtered' => ''
   ));
-  $wpdb->insert( $wpdb->term_relationships, array('term_taxonomy_id' => $cat_tt_id, 'object_id' => 1) );
+  $wpdb->insert( $wpdb->term_relationships, array('term_taxonomy_id' => $cat_tt_id, 'object_id' => 1) );*/
 
   // First Page
-  $first_page = sprintf( __( "This is an example page."), admin_url() );
+  $first_page = sprintf( __( "Dies ist eine Beispielseite."), admin_url() );
   $first_post_guid = get_option('home') . '/?page_id=2';
   $wpdb->insert( $wpdb->posts, array(
     'post_author' => $user_id,
@@ -200,8 +205,8 @@ function wp_install_defaults( $user_id ) {
     'post_content' => $first_page,
     'post_excerpt' => '',
     'comment_status' => 'closed',
-    'post_title' => __( 'Sample Page' ),
-    'post_name' => __( 'sample-page' ),
+    'post_title' => __( 'Beispielseite' ),
+    'post_name' => __( 'beispielseite' ),
     'post_modified' => $now,
     'post_modified_gmt' => $now_gmt,
     'guid' => $first_post_guid,
@@ -246,13 +251,13 @@ function wp_install_defaults( $user_id ) {
   /** @see wp-includes/user.php */
 
   /** Activate some plugins automatically if they exists */
-  wp_palvelu_install_activate_plugins();
+  wp_install_activate_plugins();
 }
 
 /*
  * Helper which activates some useful plugins
  */
-function wp_palvelu_install_activate_plugins() {
+function wp_install_activate_plugins() {
 
   // Get the list of all installed plugins
   $all_plugins = get_plugins();
