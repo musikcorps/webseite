@@ -1,7 +1,7 @@
 # Wordpress .htaccess configuration
 
 RewriteEngine On
-RewriteBase /
+RewriteBase /musikcorps/
 
 RewriteRule ^index\.php$ - [L]
 

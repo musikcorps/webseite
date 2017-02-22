@@ -6,6 +6,8 @@ $content = $post->post_content;
 $content = apply_filters('the_content', $content);
 $content = str_replace(']]>', ']]&gt;', $content);
 
+$text_content = strip_tags(preg_replace('/\<br(\s*)?\/?\>|\<\/p\>/i', "\n", $content));
+
 ?>
 
 <div class="wrap">
@@ -27,9 +29,12 @@ $content = str_replace(']]>', ']]&gt;', $content);
                                 <?php endforeach ?>
                             </ul>
                         </p>
+                    </div>
+                </div>
 
-                        <hr />
-
+                <p><b>HTML-Version</b></p>
+                <div class="postbox">
+                    <div class="inside">
                         <style>
                             .post-container { width: 100%; overflow-x: auto; }
                             .post-container img { max-width: 100%; height: auto; }
@@ -37,7 +42,15 @@ $content = str_replace(']]>', ']]&gt;', $content);
                         <div class="post-container">
                             <?= $content ?>
                         </div>
+                    </div>
+                </div>
 
+                <p><b>Nur-Text-Version</b></p>
+                <div class="postbox">
+                    <div class="inside">
+                        <div class="post-container">
+                            <pre><?= $text_content ?></pre>
+                        </div>
                     </div>
                 </div>
             </div>
