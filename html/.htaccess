@@ -26,4 +26,3 @@ RewriteRule . index.php [L]
 </Files>
 
 Options -Indexes
-
