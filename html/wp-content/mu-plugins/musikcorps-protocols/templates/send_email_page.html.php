@@ -8,6 +8,18 @@ $content = str_replace(']]>', ']]&gt;', $content);
 
 $text_content = strip_tags(preg_replace('/\<br(\s*)?\/?\>|\<\/p\>/i', "\n", $content));
 
+$emails = $_GET["emails"];
+
+$raw_recipients = get_option('recipients');
+preg_match_all('!(.*?)\s+<\s*(.*?)\s*>!', $raw_recipients, $matches);
+$recipients = array();
+for ($i=0; $i<count($matches[0]); $i++) {
+    $recipients[] = array(
+        'name' => $matches[1][$i],
+        'email' => $matches[2][$i],
+    );
+}
+
 ?>
 
 <div class="wrap">
@@ -24,8 +36,11 @@ $text_content = strip_tags(preg_replace('/\<br(\s*)?\/?\>|\<\/p\>/i', "\n", $con
                         <p><b>Empfänger:</b></p>
                         <p>
                             <ul>
-                                <?php foreach($_GET["emails"] as $email): ?>
-                                    <li><?= esc_attr($email) ?></li>
+                                <?php foreach($emails as $email): ?>
+                                    <li>
+                                        <?= esc_attr($recipients[$email]['name']) ?>
+                                        &lt;<?= esc_attr($recipients[$email]['email']) ?>&gt;
+                                    </li>
                                 <?php endforeach ?>
                             </ul>
                         </p>
@@ -57,11 +72,28 @@ $text_content = strip_tags(preg_replace('/\<br(\s*)?\/?\>|\<\/p\>/i', "\n", $con
 
             <div id="postbox-container-1" class="postbox-container">
                 <div class="postbox">
+                    <h2 class="hndle" style="cursor: default;">Frühere E-Mails</h2>
+                    <div class="inside">
+                        <p>
+                            <span class="dashicons dashicons-yes"></span>
+                            Dieses Protokoll wurde bisher nicht per E-Mail gesendet.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="postbox">
                     <h2 class="hndle" style="cursor: default;">Absenden</h2>
                     <div class="inside">
                         <p>Ich habe überprüft: Die E-Mail sieht gut aus und die Empfänger sind korrekt.</p>
                         <div class="clear"></div>
-                        <input type="submit" name="do_send_email" class="button button-primary button-large" value="Jetzt versenden!" />
+                        <form action="admin-post.php" method="post">
+                            <input type="hidden" name="post" value="<?= $post->ID ?>" />
+                            <?php foreach($emails as $email): ?>
+                                <input type="hidden" name="email[]" value="<?= $email ?>" />
+                            <?php endforeach ?>
+                            <input type="hidden" name="action" value="musikcorps_do_send_email" />
+                            <input type="submit" name="musikcorps_do_send_email" class="button button-primary button-large" value="Jetzt versenden!" />
+                        </form>
                     </div>
                 </div>
             </div>

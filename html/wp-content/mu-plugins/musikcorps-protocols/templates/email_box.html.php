@@ -13,9 +13,9 @@ for ($i=0; $i<count($matches[0]); $i++) {
 ?>
 
 <div style="padding: .3rem 0 .5rem 0;">
-    <?php foreach($recipients as $recipient): ?>
+    <?php foreach($recipients as $i => $recipient): ?>
         <label style="display: block;">
-            <input type="checkbox" name="emails[]" value="<?= esc_attr($recipient["name"])." <".esc_attr($recipient["email"]).">" ?>" />
+            <input type="checkbox" name="emails[]" value="<?= $i ?>" />
             <?= esc_attr($recipient["name"]) ?>
         </label>
     <?php endforeach ?>

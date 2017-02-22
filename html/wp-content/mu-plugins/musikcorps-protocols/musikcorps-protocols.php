@@ -24,6 +24,8 @@ class MusikcorpsProtocolsPlugin {
         add_action('admin_menu', array($this, 'register_send_page'));
         add_action('admin_menu', array($this, 'register_settings_page'));
         add_action('admin_init', array($this, 'register_settings'));
+        add_action('admin_post_musikcorps_do_send_email', array($this, 'do_send_email'));
+        add_filter('post_updated_messages', array($this, 'protocol_updated_messages'));
     }
 
     private function render($template) {
@@ -39,9 +41,30 @@ class MusikcorpsProtocolsPlugin {
             'public' => true,
             'has_archive' => true,
             'rewrite' => array('slug' => 'protokolle'),
-            'menu_position' => 20
+            'menu_position' => 20,
         ));
         flush_rewrite_rules();
+    }
+
+    public function protocol_updated_messages($messages) {
+        global $post, $post_ID;
+        $messages['musikcorps_protocol'] = array(
+            0 => '', // Unused. Messages start at index 1.
+            1 => sprintf( __('Protokoll aktualisiert. <a href="%s">Anschauen</a>', 'musikcorps'), esc_url(get_permalink($post_ID))),
+            2 => '',
+            3 => '',
+            4 => __('Protokoll aktualisiert.', 'musikcorps'),
+            5 => isset($_GET['revision'] ) ? sprintf( __( 'Protokoll als Revision %s gespeichert.', 'musikcorps'), wp_post_revision_title((int) $_GET['revision'], false)) : false,
+            6 => sprintf(__('Protokoll veröffentlicht. <a href="%s">Anschauen</a>', 'musikcorps'), esc_url(get_permalink($post_ID))),
+            7 => __('Protokoll gespeichert.', 'musikcorps'),
+            8 => sprintf(__('Protokoll eingereicht. <a target="_blank" href="%s">Vorschau</a>', 'musikcorps'), esc_url(add_query_arg('preview', 'true', get_permalink($post_ID)))),
+            9 => sprintf(__('Protokoll geplant für: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Vorschau</a>', 'musikcorps'), date_i18n(__('M j, Y @ G:i', 'recipe-hero'), strtotime($post->post_date)), esc_url(get_permalink($post_ID))),
+            10 => sprintf(__('Protokoll-Entwurf aktualisiert. <a target="_blank" href="%s">Vorschau</a>', 'musikcorps'), esc_url(add_query_arg('preview', 'true', get_permalink($post_ID)))),
+
+            101 => __('Das Protokoll wurde erfolgreich per E-Mail verschickt.', 'musikcorps'),
+            102 => __('Du musst mindestens einen Empfänger auswählen.', 'musikcorps'),
+        );
+        return $messages;
     }
 
     public function add_protocol_email_box() {
@@ -56,15 +79,18 @@ class MusikcorpsProtocolsPlugin {
 
     function check_email_on_save() {
         if (isset($_POST["send_email"])) {
+            $postId = get_the_ID();
             if(count($_POST["emails"]) > 0) {
                 $query = http_build_query(array(
                     "page" => "musikcorps_protocols_send_page",
-                    "post" => get_the_ID(),
+                    "post" => $postId,
                     "emails" => $_POST["emails"]
                 ));
                 wp_redirect("admin.php?$query");
                 exit();
             } else {
+                wp_redirect("post.php?action=edit&post=$postId&message=102");
+                exit();
             }
         }
     }
@@ -113,6 +139,30 @@ class MusikcorpsProtocolsPlugin {
 
     public function register_settings() {
         register_setting('musikcorps-protocols', 'recipients');
+    }
+
+    public function do_send_email() {
+        $postId = $_POST["post"];
+
+        $raw_recipients = get_option('recipients');
+        preg_match_all('!(.*?)\s+<\s*(.*?)\s*>!', $raw_recipients, $matches);
+        $recipients = array();
+        for ($i=0; $i<count($matches[0]); $i++) {
+            $recipients[] = array(
+                'name' => $matches[1][$i],
+                'email' => $matches[2][$i],
+            );
+        }
+
+        $addresses = array_map(function ($x) use($recipients) {
+            return $recipients[$x]["name"]." <".$recipients[$x]["email"].">";
+        }, $_GET["emails"]);
+        $post = get_post($postId);
+
+        wp_mail($addresses, $post->post_title, $post->post_content);
+
+        wp_redirect("post.php?action=edit&post=$postId&message=101");
+        exit();
     }
 }
 
