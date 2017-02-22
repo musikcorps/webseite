@@ -89,7 +89,7 @@ for ($i=0; $i<count($matches[0]); $i++) {
                         <form action="admin-post.php" method="post">
                             <input type="hidden" name="post" value="<?= $post->ID ?>" />
                             <?php foreach($emails as $email): ?>
-                                <input type="hidden" name="email[]" value="<?= $email ?>" />
+                                <input type="hidden" name="emails[]" value="<?= $email ?>" />
                             <?php endforeach ?>
                             <input type="hidden" name="action" value="musikcorps_do_send_email" />
                             <input type="submit" name="musikcorps_do_send_email" class="button button-primary button-large" value="Jetzt versenden!" />

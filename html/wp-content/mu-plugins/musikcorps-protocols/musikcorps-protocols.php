@@ -156,7 +156,7 @@ class MusikcorpsProtocolsPlugin {
 
         $addresses = array_map(function ($x) use($recipients) {
             return $recipients[$x]["name"]." <".$recipients[$x]["email"].">";
-        }, $_GET["emails"]);
+        }, $_POST["emails"]);
         $post = get_post($postId);
 
         wp_mail($addresses, $post->post_title, $post->post_content);
