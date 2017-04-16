@@ -15,7 +15,21 @@
                     <p class="description">
                         Trage einen möglichen Empfänger pro Zeile ein. Zunächst kommt der Name, anschließend die
                         Adresse in spitzen Klammern.<br />
-                        Beispiel: Mitglieder Musikcorps &lt;alle@musikcorps-niedernberg.de&gt;
+                        Beispiel: Mitglieder Musikcorps &lt&lt;alle@musikcorps-niedernberg.de&gt&gt;
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <label for="from_address">Absender-Adresse</label>
+                </th>
+                <td>
+                    <input name="from_address" id="from_address" style="width: 100%;"
+                           placeholder="Musikcorps Niedernberg <no-reply@musikcorps-niedernberg.de>"
+                           value="<?php echo esc_attr(get_option('from_address')); ?>" />
+                    <p class="description">
+                        Von dieser E-Mail-Adresse werden Presse-Infos und Protokolle verschickt.<br />
+                        Beispiel: Musikcorps Niedernberg &lt;no-reply@musikcorps-niedernberg.de&gt;
                     </p>
                 </td>
             </tr>

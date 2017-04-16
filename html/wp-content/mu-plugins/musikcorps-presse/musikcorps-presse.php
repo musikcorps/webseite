@@ -179,12 +179,14 @@ class MusikcorpsPressePlugin {
 
     public function register_settings() {
         register_setting('musikcorps-presse', 'recipients');
+        register_setting('musikcorps-presse', 'from_address');
     }
 
     public function do_send_email() {
         $postId = $_POST["post"];
-
         $raw_recipients = get_option('recipients');
+        $from = get_option('from_address');
+
         preg_match_all('!(.*?)\s+<\s*(.*?)\s*>!', $raw_recipients, $matches);
         $recipients = array();
         for ($i=0; $i<count($matches[0]); $i++) {
@@ -199,7 +201,17 @@ class MusikcorpsPressePlugin {
         }, $_POST["emails"]);
         $post = get_post($postId);
 
-        $result = wp_mail($addresses, $post->post_title, $post->post_content);
+        $headers = array(
+            "From: $from",
+            'Content-Type: text/html; charset=UTF-8'
+        );
+
+        $content = $post->post_content;
+        $content = apply_filters('the_content', $content);
+        $content = str_replace(']]>', ']]&gt;', $content);
+        $text_content = strip_tags(preg_replace('/\<br(\s*)?\/?\>|\<\/p\>/i', "\n", $content));
+
+        $result = wp_mail($addresses, $post->post_title, $content, $headers);
 
         if ($result) {
             wp_redirect("post.php?action=edit&post=$postId&message=101");
