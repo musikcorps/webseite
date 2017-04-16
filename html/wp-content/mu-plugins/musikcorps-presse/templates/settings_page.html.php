@@ -1,8 +1,8 @@
 <div class="wrap">
     <h1>Musikcorps Protokolle - Einstellungen</h1>
     <form method="post" action="options.php">
-        <?php settings_fields('musikcorps-protocols'); ?>
-        <?php do_settings_sections('musikcorps-protocols'); ?>
+        <?php settings_fields('musikcorps-presse'); ?>
+        <?php do_settings_sections('musikcorps-presse'); ?>
         <table class="form-table">
             <tr>
                 <th scope="row">

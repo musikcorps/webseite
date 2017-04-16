@@ -23,7 +23,7 @@ for ($i=0; $i<count($matches[0]); $i++) {
 ?>
 
 <div class="wrap">
-    <h1 class="wp-heading-inline">Protokoll per E-Mail versenden</h1>
+    <h1 class="wp-heading-inline">Per E-Mail versenden</h1>
     <div id="poststuff">
         <div id="post-body" class="metabox-holder columns-2">
 
