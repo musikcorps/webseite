@@ -124,7 +124,7 @@ class MusikcorpsProtocolsPlugin {
     }
 
     public function register_settings_page() {
-        add_menu_page(
+        add_options_page(
             'Protokolle',
             __('Protokolle', 'musikcorps'),
             'manage_options',

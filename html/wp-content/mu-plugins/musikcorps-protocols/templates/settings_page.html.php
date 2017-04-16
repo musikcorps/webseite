@@ -10,7 +10,7 @@
                 </th>
                 <td>
                     <textarea name="recipients" id="recipients" style="width: 100%;" rows="4"
-                              placeholder="Mitglieder Musikcorps <alle@dev.musikcorps-niedernberg.de>"
+                              placeholder="Mitglieder Musikcorps <alle@musikcorps-niedernberg.de>"
                     ><?php echo esc_attr(get_option('recipients')); ?></textarea>
                     <p class="description">
                         Trage einen möglichen Empfänger pro Zeile ein. Zunächst kommt der Name, anschließend die
