@@ -15,6 +15,9 @@ html/wp
 # Apache
 html/.htaccess
 
+# Docker
+html/docker.htaccess
+
 # Dotenv
 .env
 config/*.env
