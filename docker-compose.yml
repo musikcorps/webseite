@@ -14,9 +14,5 @@ services:
 
   database:
     image: mariadb
-    environment:
-      MYSQL_ROOT_PASSWORD: a
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: changeme1
+    env_file: config/docker.env
 

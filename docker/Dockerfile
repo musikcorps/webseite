@@ -32,12 +32,14 @@ WORKDIR /var/www/virtual/docker/wordpress
 
 RUN mkdir /var/www/virtual/docker/html
 
+COPY composer.json ./
+RUN composer install
+
 COPY wp-cli.yml ./
 COPY docker/entrypoint.sh ./
 COPY docker/check-and-setup.sh ./
 COPY script ./script/
 COPY config ./config/
-COPY composer.json ./
 COPY tests ./tests/
 COPY html ./html/
 

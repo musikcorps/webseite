@@ -1,6 +1,6 @@
 {
   "name": "musikcorps/webseite",
-  "description": "Musikcorps Niedernberg website",
+  "description": "Musikcorps Niedernberg e.V. Website",
   "authors": [
     {
       "name": "Johannes Lauinger",
@@ -34,10 +34,11 @@
     "vlucas/phpdotenv": "1.0.9",
     "oscarotero/env": "^1.0",
 
-    "johnpbloch/wordpress": ">=4.7.2",
+    "johnpbloch/wordpress": "*",
     "wp-cli/wp-cli" : "~0.22",
 
-    "koodimonni-language/de_de": "*"
+    "koodimonni-language/de_de": "*",
+    "wpackagist-plugin/event-list": "0.7.8"
   },
   "require-dev": {
     "phpunit/phpunit": "*"

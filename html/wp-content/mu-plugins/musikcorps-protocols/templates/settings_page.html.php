@@ -6,7 +6,7 @@
         <table class="form-table">
             <tr>
                 <th scope="row">
-                    <label for="recipients">Empfänger</label>
+                    <label for="recipients">Mögliche Empfänger</label>
                 </th>
                 <td>
                     <textarea name="recipients" id="recipients" style="width: 100%;" rows="4"
