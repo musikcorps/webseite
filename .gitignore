@@ -11,6 +11,9 @@ html/wp-content/uploads/
 # WordPress
 html/wp
 
+# Apache
+html/.htaccess
+
 # Dotenv
 .env
 config/*.env

@@ -50,6 +50,7 @@ RUN script/uberspace-setup
 
 RUN test -e config/docker.env || cp config/env.example config/docker.env
 RUN ln -s config/docker.env .env
+RUN cp -f html/htaccess.example html/.htaccess
 
 RUN chown -R www-data:www-data /var/www
 

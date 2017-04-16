@@ -52,6 +52,7 @@ Now create a suitable config file:
 ```
 cp config/env.example config/production.env
 ln -s config/production.env .env
+cp html/htaccess.example html/.htaccess
 ```
 
 Adjust the configuration settings to suitable values.
