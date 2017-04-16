@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "46f71eb6665ce46b5605c037af3c0439",
+    "content-hash": "5db97f8795b202a28742b00964a0ad8d",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -2111,6 +2111,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/event-list/"
+        },
+        {
+            "name": "wpackagist-plugin/lazyest-gallery",
+            "version": "1.1.21",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/lazyest-gallery/",
+                "reference": "tags/1.1.21"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/lazyest-gallery.1.1.21.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/lazyest-gallery/"
         }
     ],
     "packages-dev": [

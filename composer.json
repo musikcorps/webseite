@@ -38,7 +38,8 @@
     "wp-cli/wp-cli" : "~0.22",
 
     "koodimonni-language/de_de": "*",
-    "wpackagist-plugin/event-list": "0.7.8"
+    "wpackagist-plugin/event-list": ">=0.7.8",
+    "wpackagist-plugin/lazyest-gallery": ">=1.1.19.1"
   },
   "require-dev": {
     "phpunit/phpunit": "*"
