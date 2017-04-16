@@ -16,7 +16,8 @@ namespace Musikcorps;
 
 class MusikcorpsPressePlugin {
 
-    private $boundary = "fsdr6475uid";
+    // MIME multipart boundary
+    private $boundary = "564db94f777e5d1308e32a6773ff812f4178481c326a49b2180fdf5fb415";
 
     public function __construct() {
         add_action('init', array($this, 'create_post_types'));
