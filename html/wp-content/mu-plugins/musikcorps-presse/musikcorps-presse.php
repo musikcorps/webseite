@@ -16,6 +16,8 @@ namespace Musikcorps;
 
 class MusikcorpsPressePlugin {
 
+    private $boundary = "fsdr6475uid";
+
     public function __construct() {
         add_action('init', array($this, 'create_post_types'));
         add_action('post_submitbox_misc_actions', array($this, 'protocol_change_visibility_metabox'));
@@ -203,7 +205,7 @@ class MusikcorpsPressePlugin {
 
         $headers = array(
             "From: $from",
-            'Content-Type: text/html; charset=UTF-8'
+            "MIME-Version: 1.0",
         );
 
         $content = $post->post_content;
@@ -211,7 +213,15 @@ class MusikcorpsPressePlugin {
         $content = str_replace(']]>', ']]&gt;', $content);
         $text_content = strip_tags(preg_replace('/\<br(\s*)?\/?\>|\<\/p\>/i', "\n", $content));
 
-        $result = wp_mail($addresses, $post->post_title, $content, $headers);
+        $body = "--$this->boundary\nContent-Type: text/plain\n\n" .
+                $text_content .
+                "\n\n--$this->boundary\nContent-Type: text/html; charset=utf-8\n\n" .
+                $content .
+                "\n\n--$this->boundary--";
+
+        add_filter('wp_mail_content_type', array($this, 'mail_content_type'));
+        $result = wp_mail($addresses, $post->post_title, $body, $headers);
+        remove_filter('wp_mail_content_type', array($this, 'mail_content_type'));
 
         if ($result) {
             wp_redirect("post.php?action=edit&post=$postId&message=101");
@@ -219,6 +229,10 @@ class MusikcorpsPressePlugin {
             wp_redirect("post.php?action=edit&post=$postId&message=102");
         }
         exit();
+    }
+
+    function mail_content_type() {
+        return "multipart/alternative; boundary=$this->boundary";
     }
 }
 
