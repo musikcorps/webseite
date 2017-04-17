@@ -43,12 +43,12 @@ class MusikcorpsMembersPlugin {
       	$sql = "CREATE TABLE $this->table_name (
         		id mediumint(9) NOT NULL AUTO_INCREMENT,
         		firstname varchar(256) NOT NULL,
-            lastname varchar(256) NOT NULL,
-            instrument varchar(256) NULL,
-            register varchar(256) NULL,
-            birthday date NULL,
-            active_since date NULL,
-            abzeichen varchar(4096) NULL,
+                lastname varchar(256) NOT NULL,
+                instrument varchar(256) NULL,
+                register varchar(256) NULL,
+                birthday date NULL,
+                active_since date NULL,
+                abzeichen varchar(4096) NULL,
         		PRIMARY KEY id (id)
       	) $charset_collate;";
       	require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
@@ -60,16 +60,40 @@ class MusikcorpsMembersPlugin {
         add_menu_page(
             'musikcorps_members_view',
             __('Mitglieder', 'musikcorps'),
-            'manage_options',
+            'edit_posts',
             'musikcorps_members',
             array($this, 'render_admin_view'),
             'dashicons-heart',
             35
         );
+        add_submenu_page(
+            'musikcorps_members',
+            'musikcorps_members_add',
+            __('Erstellen', 'musikcorps'),
+            'edit_posts',
+            'musikcorps_members_add',
+            array($this, 'render_admin_add')
+        );
+        add_submenu_page(
+            'musikcorps_members',
+            'musikcorps_members_import',
+            __('Importieren', 'musikcorps'),
+            'edit_posts',
+            'musikcorps_members_import',
+            array($this, 'render_admin_import')
+        );
     }
 
     public function render_admin_view() {
         $this->render('admin_view');
+    }
+
+    public function render_admin_add() {
+        $this->render('admin_add');
+    }
+
+    public function render_admin_import() {
+        $this->render('admin_import');
     }
 }
 
