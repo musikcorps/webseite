@@ -56,6 +56,7 @@ class MusikcorpsPressePlugin {
             'exclude_from_search' => true,
             'rewrite' => array('slug' => 'protokolle'),
             'menu_position' => 31,
+            'menu_icon' => 'dashicons-clipboard',
         ));
         register_post_type('musikcorps_presse', array(
             'labels' => array(
@@ -68,6 +69,7 @@ class MusikcorpsPressePlugin {
             'has_archive' => true,
             'rewrite' => array('slug' => 'presse'),
             'menu_position' => 30,
+            'menu_icon' => 'dashicons-rss',
         ));
         flush_rewrite_rules();
     }

@@ -20,7 +20,7 @@ class MusikcorpsMembersPlugin {
 
     public function __construct() {
         $this->check_and_init_db();
-        add_action('init', array($this, 'create_post_type'));
+        add_action('admin_menu', array($this, 'register_admin_view'));
     }
 
     private function render($template) {
@@ -38,7 +38,6 @@ class MusikcorpsMembersPlugin {
     public function create_db() {
         global $wpdb;
       	$charset_collate = $wpdb->get_charset_collate();
-
       	$sql = "CREATE TABLE $this->table_name (
         		id mediumint(9) NOT NULL AUTO_INCREMENT,
         		firstname varchar(256) NOT NULL,
@@ -50,11 +49,26 @@ class MusikcorpsMembersPlugin {
             abzeichen varchar(4096) NULL,
         		PRIMARY KEY id (id)
       	) $charset_collate;";
-
       	require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
       	dbDelta($sql);
         update_option('musikcorps_members_version', '1.0');
     }
+
+    public function register_admin_view() {
+      add_menu_page(
+          'musikcorps_members_view',
+          __('Mitglieder', 'musikcorps'),
+          'manage_options',
+          'musikcorps_members',
+          array($this, 'render_admin_view'),
+          'dashicons-heart',
+          35
+      );
+  }
+
+  public function render_admin_view() {
+      $this->render('admin_view');
+  }
 }
 
 
