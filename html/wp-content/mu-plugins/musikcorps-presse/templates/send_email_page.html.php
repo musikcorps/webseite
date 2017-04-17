@@ -2,11 +2,12 @@
 
 $post = get_post($_GET["post"]);
 
-$content = $post->post_content;
+$content = "<h1>$post->post_title</h1><br>\n\n" . $post->post_content;
 $content = apply_filters('the_content', $content);
 $content = str_replace(']]>', ']]&gt;', $content);
 
 $text_content = strip_tags(preg_replace('/\<br(\s*)?\/?\>|\<\/p\>/i', "\n", $content));
+$text_content = implode("\n", array_map('trim', explode("\n", $text_content)));
 
 $emails = $_GET["emails"];
 

@@ -29,10 +29,18 @@ class MusikcorpsPressePlugin {
         add_action('admin_init', array($this, 'register_settings'));
         add_action('admin_post_musikcorps_do_send_email', array($this, 'do_send_email'));
         add_filter('post_updated_messages', array($this, 'updated_messages'));
+        add_shortcode('presse-geburtstage', array($this, 'shortcode_birthdays'));
+        add_shortcode('presse-impressum', array($this, 'shortcode_imprint'));
     }
 
     private function render($template) {
         include plugin_dir_path(__FILE__)."/templates/$template.html.php";
+    }
+
+    private function ob_render($template) {
+        ob_start();
+        include plugin_dir_path(__FILE__)."/templates/$template.html.php";
+        return ob_get_clean();
     }
 
     public function create_post_types() {
@@ -44,8 +52,7 @@ class MusikcorpsPressePlugin {
                 'add_new_item' => __('Protokoll erstellen')
             ),
             'public' => true,
-            'visibility' => 'private',
-            'has_archive' => false,
+            'has_archive' => true,
             'exclude_from_search' => true,
             'rewrite' => array('slug' => 'protokolle'),
             'menu_position' => 31,
@@ -58,7 +65,7 @@ class MusikcorpsPressePlugin {
                 'add_new_item' => __('Presse-Info erstellen')
             ),
             'public' => true,
-            'has_archive' => false,
+            'has_archive' => true,
             'rewrite' => array('slug' => 'presse'),
             'menu_position' => 30,
         ));
@@ -183,6 +190,7 @@ class MusikcorpsPressePlugin {
     public function register_settings() {
         register_setting('musikcorps-presse', 'recipients');
         register_setting('musikcorps-presse', 'from_address');
+        register_setting('musikcorps-presse', 'imprint');
     }
 
     public function do_send_email() {
@@ -209,10 +217,12 @@ class MusikcorpsPressePlugin {
             "MIME-Version: 1.0",
         );
 
-        $content = $post->post_content;
+        $content = "<h1>$post->post_title</h1><br>\n\n" . $post->post_content;
         $content = apply_filters('the_content', $content);
         $content = str_replace(']]>', ']]&gt;', $content);
+
         $text_content = strip_tags(preg_replace('/\<br(\s*)?\/?\>|\<\/p\>/i', "\n", $content));
+        $text_content = implode("\n", array_map('trim', explode("\n", $text_content)));
 
         $body = "--$this->boundary\nContent-Type: text/plain\n\n" .
                 $text_content .
@@ -234,6 +244,14 @@ class MusikcorpsPressePlugin {
 
     function mail_content_type() {
         return "multipart/alternative; boundary=$this->boundary";
+    }
+
+    function shortcode_birthdays() {
+        return $this->ob_render('shortcode_birthdays');
+    }
+
+    function shortcode_imprint() {
+        return get_option('imprint');
     }
 }
 
