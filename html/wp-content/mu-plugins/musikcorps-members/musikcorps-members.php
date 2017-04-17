@@ -13,6 +13,8 @@ License:      MIT License
 
 namespace Musikcorps;
 
+require_once('members-list-table.php');
+
 
 class MusikcorpsMembersPlugin {
 
@@ -55,20 +57,20 @@ class MusikcorpsMembersPlugin {
     }
 
     public function register_admin_view() {
-      add_menu_page(
-          'musikcorps_members_view',
-          __('Mitglieder', 'musikcorps'),
-          'manage_options',
-          'musikcorps_members',
-          array($this, 'render_admin_view'),
-          'dashicons-heart',
-          35
-      );
-  }
+        add_menu_page(
+            'musikcorps_members_view',
+            __('Mitglieder', 'musikcorps'),
+            'manage_options',
+            'musikcorps_members',
+            array($this, 'render_admin_view'),
+            'dashicons-heart',
+            35
+        );
+    }
 
-  public function render_admin_view() {
-      $this->render('admin_view');
-  }
+    public function render_admin_view() {
+        $this->render('admin_view');
+    }
 }
 
 
