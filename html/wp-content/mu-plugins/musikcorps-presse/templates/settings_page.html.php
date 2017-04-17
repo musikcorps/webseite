@@ -35,14 +35,14 @@
             </tr>
             <tr>
                 <th scope="row">
-                    <label for="imprint">E-Mail-Signatur</label>
+                    <label for="signature">E-Mail-Signatur</label>
                 </th>
                 <td>
-                    <textarea name="imprint" id="imprint" style="width: 100%;" rows="10"
-                    ><?php echo esc_attr(get_option('imprint')); ?></textarea>
+                    <textarea name="signature" id="signature" style="width: 100%;" rows="10"
+                    ><?php echo esc_attr(get_option('signature')); ?></textarea>
                     <p class="description">
-                        Signatur, die in E-Mails angefügt wird, wenn das [presse-impressum] Tag eingebaut wurde. HTML wird unterstützt.<br />
-                        Beispiel: &lt;p&gt;&lt;small<&gt;&copy; Musikcorps FFW Niedernberg e.V.&lt;/small<&gt;&lt;/p&gt;
+                        Signatur, die in E-Mails angefügt wird, wenn das [presse-signatur] Tag eingebaut wurde. HTML wird unterstützt.<br />
+                        Beispiel: &lt;p&gt;&lt;small&gt;&copy; Musikcorps FFW Niedernberg e.V.&lt;/small&gt;&lt;/p&gt;
                     </p>
                 </td>
             </tr>

@@ -30,7 +30,7 @@ class MusikcorpsPressePlugin {
         add_action('admin_post_musikcorps_do_send_email', array($this, 'do_send_email'));
         add_filter('post_updated_messages', array($this, 'updated_messages'));
         add_shortcode('presse-geburtstage', array($this, 'shortcode_birthdays'));
-        add_shortcode('presse-impressum', array($this, 'shortcode_imprint'));
+        add_shortcode('presse-signatur', array($this, 'shortcode_signature'));
     }
 
     private function render($template) {
@@ -190,7 +190,7 @@ class MusikcorpsPressePlugin {
     public function register_settings() {
         register_setting('musikcorps-presse', 'recipients');
         register_setting('musikcorps-presse', 'from_address');
-        register_setting('musikcorps-presse', 'imprint');
+        register_setting('musikcorps-presse', 'signature');
     }
 
     public function do_send_email() {
@@ -250,8 +250,8 @@ class MusikcorpsPressePlugin {
         return $this->ob_render('shortcode_birthdays');
     }
 
-    function shortcode_imprint() {
-        return get_option('imprint');
+    function shortcode_signature() {
+        return get_option('signature');
     }
 }
 
