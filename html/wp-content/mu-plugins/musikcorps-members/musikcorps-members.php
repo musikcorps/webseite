@@ -24,6 +24,7 @@ class MusikcorpsMembersPlugin {
         $this->check_and_init_db();
         add_action('admin_menu', array($this, 'register_admin_view'));
         add_action('admin_post_musikcorps_save_member', array($this, 'save_member'));
+        add_shortcode('mitglieder', array($this, 'shortcode_members'));
     }
 
     private function render($template) {
@@ -159,6 +160,12 @@ class MusikcorpsMembersPlugin {
 
     public function render_admin_import() {
         $this->render('admin_import');
+    }
+
+    public function shortcode_members() {
+        global $wpdb;
+        $this->items = $wpdb->get_results("SELECT * FROM $this->table_name ORDER BY firstname asc");
+        $this->render('shortcode_members');
     }
 }
 

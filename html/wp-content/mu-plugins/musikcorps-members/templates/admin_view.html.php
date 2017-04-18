@@ -16,7 +16,7 @@ $table->prepare_items();
 
 
 <style>
-    #col_id { width: 50px; }
+    #id { width: 50px; }
     .success { margin: 15px 0 0; background: #fff; border-left: 4px solid #46b450; box-shadow: 0 1px 1px 0 rgba(0,0,0,.1); padding: 1px 12px; }
     .success p { padding: 2px; margin: .5em 0; }
 </style>
