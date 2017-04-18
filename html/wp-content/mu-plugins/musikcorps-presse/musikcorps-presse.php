@@ -31,6 +31,8 @@ class MusikcorpsPressePlugin {
         add_filter('post_updated_messages', array($this, 'updated_messages'));
         add_shortcode('presse-geburtstage', array($this, 'shortcode_birthdays'));
         add_shortcode('presse-signatur', array($this, 'shortcode_signature'));
+        add_filter('default_content', array($this, 'default_content'), 10, 2);
+        add_filter('default_title', array($this, 'default_title'), 10, 2);
     }
 
     private function render($template) {
@@ -74,7 +76,7 @@ class MusikcorpsPressePlugin {
         flush_rewrite_rules();
     }
 
-    function protocol_change_visibility_metabox() {
+    public function protocol_change_visibility_metabox() {
         global $post;
         if ($post->post_type != 'musikcorps_protocol') return;
         $post->post_password = '';
@@ -193,6 +195,8 @@ class MusikcorpsPressePlugin {
         register_setting('musikcorps-presse', 'recipients');
         register_setting('musikcorps-presse', 'from_address');
         register_setting('musikcorps-presse', 'signature');
+        register_setting('musikcorps-presse', 'template_protocol');
+        register_setting('musikcorps-presse', 'template_presse');
     }
 
     public function do_send_email() {
@@ -244,11 +248,11 @@ class MusikcorpsPressePlugin {
         exit();
     }
 
-    function mail_content_type() {
+    public function mail_content_type() {
         return "multipart/alternative; boundary=$this->boundary";
     }
 
-    function shortcode_birthdays() {
+    public function shortcode_birthdays() {
         global $wpdb;
         $tablename = $wpdb->prefix . 'mc_members';
         $this->birthdays = $wpdb->get_results(
@@ -264,8 +268,27 @@ class MusikcorpsPressePlugin {
         return $this->ob_render('shortcode_birthdays');
     }
 
-    function shortcode_signature() {
+    public function shortcode_signature() {
         return get_option('signature');
+    }
+
+    public function default_content($content, $post) {
+        if ($post->post_type == "musikcorps_protocol") {
+            return get_option('template_protocol');
+        } else if ($post->post_type == "musikcorps_presse") {
+            return get_option('template_presse');
+        } else {
+            return $content;
+        }
+    }
+
+    public function default_title($content, $post) {
+        if ($post->post_type == "musikcorps_presse") {
+            $date = date("d.m.Y");
+            return "Presse-Info vom $date";
+        } else {
+            return $content;
+        }
     }
 }
 

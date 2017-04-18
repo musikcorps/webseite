@@ -38,11 +38,37 @@
                     <label for="signature">E-Mail-Signatur</label>
                 </th>
                 <td>
-                    <textarea name="signature" id="signature" style="width: 100%;" rows="10"
+                    <textarea name="signature" id="signature" style="width: 100%;" rows="7"
                     ><?php echo esc_attr(get_option('signature')); ?></textarea>
                     <p class="description">
                         Signatur, die in E-Mails angefügt wird, wenn das [presse-signatur] Tag eingebaut wurde. HTML wird unterstützt.<br />
                         Beispiel: &lt;p&gt;&lt;small&gt;&copy; Musikcorps FFW Niedernberg e.V.&lt;/small&gt;&lt;/p&gt;
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <label for="template_presse">Vorlage für Presse-Infos</label>
+                </th>
+                <td>
+                    <textarea name="template_presse" id="template_presse" style="width: 100%;" rows="7"
+                    ><?php echo esc_attr(get_option('template_presse')); ?></textarea>
+                    <p class="description">
+                        Dieser Text steht standardmäßig in einer neuen Presse-Info, sobald diese erstellt wird. HTML wird unterstützt.<br />
+                        Beispiel: [presse-geburtstage] [presse-signatur]
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <label for="template_protocol">Vorlage für Protokolle</label>
+                </th>
+                <td>
+                    <textarea name="template_protocol" id="template_protocol" style="width: 100%;" rows="7"
+                    ><?php echo esc_attr(get_option('template_protocol')); ?></textarea>
+                    <p class="description">
+                        Dieser Text steht standardmäßig in einer neuen Presse-Info, sobald diese erstellt wird. HTML wird unterstützt.<br />
+                        Beispiel: Anwesende: ... Entschuldigt: ...
                     </p>
                 </td>
             </tr>
