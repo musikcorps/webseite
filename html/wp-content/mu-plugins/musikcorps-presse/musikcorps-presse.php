@@ -174,6 +174,7 @@ class MusikcorpsPressePlugin {
     }
 
     public function render_send_page() {
+        $this->prev_mails = get_post_meta($_GET["post"], 'prev_mail', false);
         $this->render('send_email_page');
     }
 
@@ -241,6 +242,7 @@ class MusikcorpsPressePlugin {
         remove_filter('wp_mail_content_type', array($this, 'mail_content_type'));
 
         if ($result) {
+            add_post_meta($postId, "prev_mail", date("d.m.Y H:i"), false);
             wp_redirect("post.php?action=edit&post=$postId&message=101");
         } else {
             wp_redirect("post.php?action=edit&post=$postId&message=102");

@@ -76,8 +76,17 @@ for ($i=0; $i<count($matches[0]); $i++) {
                     <h2 class="hndle" style="cursor: default;">Frühere E-Mails</h2>
                     <div class="inside">
                         <p>
-                            <span class="dashicons dashicons-yes"></span>
-                            Dieses Protokoll wurde bisher nicht per E-Mail gesendet.
+                            <?php if (empty($this->prev_mails)): ?>
+                                <span class="dashicons dashicons-yes"></span>
+                                Dieses Protokoll wurde bisher nicht per E-Mail gesendet.
+                            <?php else: ?>
+                                <p>Dieses Protokoll wurde bereits per E-Mail verschickt:</p>
+                                <ul>
+                                <?php foreach($this->prev_mails as $mail): ?>
+                                    <li><span class="dashicons dashicons-email"></span> <?= $mail ?></li>
+                                <?php endforeach ?>
+                                </ul>
+                            <?php endif ?>
                         </p>
                     </div>
                 </div>
