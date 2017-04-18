@@ -8,12 +8,11 @@ class Installer {
   /**
    * Remove wp-content from wordpress and symlink it to correct location
    *
-   * @param Composer\Script\Event $event - This is the way composer talks to it's plugins
    */
   public static function symlinkWPContent(Event $event) {
     $io = $event->getIO();
     $root = dirname(dirname(__DIR__));
-    $wp_core_content_folder = "{$root}/html/wordpress/wp-content";
+    $wp_core_content_folder = "{$root}/html/wp/wp-content";
     $wp_content_folder = "{$root}/html/wp-content";
 
     if (!is_link($wp_core_content_folder)) {

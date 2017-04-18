@@ -17,7 +17,7 @@ class RemoveCommentsAdminPlugin {
 
     public function __construct() {
         add_action('admin_menu', array($this, 'remove_menus'));
-        add_action('init', array($this, 'remove_comment_support', 100));
+        add_action('init', array($this, 'remove_comment_support'));
         add_action('wp_before_admin_bar_render', array($this, 'remove_admin_bar'));
     }
 
