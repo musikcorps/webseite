@@ -86,35 +86,75 @@ class MusikcorpsMembersPlugin {
     }
 
     public function render_admin_view() {
+        global $wpdb;
         if (isset($_GET["msg"])) {
             switch (intval($_GET["msg"])) {
                 case 1: $this->message = __("Mitglied hinzugefügt."); break;
+                case 2: $this->message = __("Mitglied aktualisiert."); break;
+                case 3: $this->message = __("Mitglied gelöscht."); break;
+                case 4: $this->message = __("Unbekannte Aktion."); break;
             }
         }
-        $this->render('admin_view');
+        if (isset($_GET["id"])) {
+            $this->item = $wpdb->get_results($wpdb->prepare("SELECT * FROM $this->table_name WHERE id=%d", $_GET["id"]))[0];
+            $this->render('admin_edit');
+        } else {
+            $this->render('admin_view');
+        }
     }
 
     public function render_admin_add() {
-        $this->render('admin_add');
+        $this->render('admin_edit');
     }
 
     public function save_member() {
         global $wpdb;
-        $wpdb->insert(
-            $this->table_name,
-            array(
-                'firstname' => $_POST["firstname"],
-                'lastname' => $_POST["lastname"],
-                'instrument' => $_POST["instrument"],
-                'register' => $_POST["register"],
-                'birthday' => $_POST["birthday"],
-                'active_since' => $_POST["active_since"],
-                'abzeichen' => $_POST["abzeichen"],
-            ),
-            array('%s', '%s', '%s', '%s', '%s', '%s', '%s')
-        );
-        wp_redirect("admin.php?page=musikcorps_members&msg=1");
-        exit();
+        if (isset($_POST["musikcorps_save_member"]) && isset($_POST["id"])) {
+            $wpdb->update(
+                $this->table_name,
+                array(
+                    'firstname' => $_POST["firstname"],
+                    'lastname' => $_POST["lastname"],
+                    'instrument' => $_POST["instrument"],
+                    'register' => $_POST["register"],
+                    'birthday' => $_POST["birthday"],
+                    'active_since' => $_POST["active_since"],
+                    'abzeichen' => $_POST["abzeichen"],
+                ),
+                array('id' => $_POST["id"]),
+                array('%s', '%s', '%s', '%s', '%s', '%s', '%s'),
+                array('%d')
+            );
+            wp_redirect("admin.php?page=musikcorps_members&msg=2");
+            exit();
+        } else if (isset($_POST["musikcorps_save_member"]) && !isset($_POST["id"])) {
+            $wpdb->insert(
+                $this->table_name,
+                array(
+                    'firstname' => $_POST["firstname"],
+                    'lastname' => $_POST["lastname"],
+                    'instrument' => $_POST["instrument"],
+                    'register' => $_POST["register"],
+                    'birthday' => $_POST["birthday"],
+                    'active_since' => $_POST["active_since"],
+                    'abzeichen' => $_POST["abzeichen"],
+                ),
+                array('%s', '%s', '%s', '%s', '%s', '%s', '%s')
+            );
+            wp_redirect("admin.php?page=musikcorps_members&msg=1");
+            exit();
+        } else if (isset($_POST["musikcorps_delete_member"]) && isset($_POST["id"])) {
+            $wpdb->delete(
+                $this->table_name,
+                array('id' => $_POST["id"]),
+                array('%d')
+            );
+            wp_redirect("admin.php?page=musikcorps_members&msg=3");
+            exit();
+        } else {
+            wp_redirect("admin.php?page=musikcorps_members&msg=4");
+            exit();
+        }
     }
 
     public function render_admin_import() {

@@ -57,7 +57,7 @@ class MembersListTable extends \WP_List_Table {
 
         $this->_column_headers = array($columns, $hidden, $sortable);
 
-        $this->process_bulk_action();
+        //$this->process_bulk_action();
 
         $total_items = $wpdb->get_var("SELECT COUNT(id) FROM $this->table_name");
 
@@ -85,11 +85,11 @@ class MembersListTable extends \WP_List_Table {
                     $style = "";
                     if (in_array($column_name, $hidden)) $style = ' style="display:none;"';
                     $attributes = $class . $style;
-                    //$editlink  = '/wp-admin/member.php?action=edit&id='.(int)$rec->id;
+                    $editlink  = 'admin.php?page=musikcorps_members&id='.$rec["id"];
                     switch ($column_name) {
                         case "col_id":  echo '<td '.$attributes.'>'.stripslashes($rec["id"]).'</td>'; break;
-                        case "col_firstname": echo '<td '.$attributes.'>'.stripslashes($rec["firstname"]).'</td>'; break;
-                        case "col_lastname": echo '<td '.$attributes.'>'.stripslashes($rec["lastname"]).'</td>'; break;
+                        case "col_firstname": echo '<td '.$attributes.'><a href="'.$editlink.'">'.stripslashes($rec["firstname"]).'</a></td>'; break;
+                        case "col_lastname": echo '<td '.$attributes.'><a href="'.$editlink.'">'.stripslashes($rec["lastname"]).'</a></td>'; break;
                         case "col_instrument": echo '<td '.$attributes.'>'.stripslashes($rec["instrument"]).'</td>'; break;
                         case "col_register": echo '<td '.$attributes.'>'.stripslashes($rec["register"]).'</td>'; break;
                         case "col_birthday": echo '<td '.$attributes.'>'.stripslashes($rec["birthday"]).'</td>'; break;
