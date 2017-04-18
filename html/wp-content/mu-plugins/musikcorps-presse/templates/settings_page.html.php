@@ -15,7 +15,7 @@
                     <p class="description">
                         Trage einen möglichen Empfänger pro Zeile ein. Zunächst kommt der Name, anschließend die
                         Adresse in spitzen Klammern.<br />
-                        Beispiel: Mitglieder Musikcorps &lt&lt;alle@musikcorps-niedernberg.de&gt&gt;
+                        Beispiel: Mitglieder Musikcorps &ltalle@musikcorps-niedernberg.de&gt
                     </p>
                 </td>
             </tr>

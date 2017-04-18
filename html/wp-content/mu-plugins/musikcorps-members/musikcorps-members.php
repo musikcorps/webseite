@@ -23,6 +23,7 @@ class MusikcorpsMembersPlugin {
     public function __construct() {
         $this->check_and_init_db();
         add_action('admin_menu', array($this, 'register_admin_view'));
+        add_action('admin_post_musikcorps_save_member', array($this, 'save_member'));
     }
 
     private function render($template) {
@@ -85,11 +86,35 @@ class MusikcorpsMembersPlugin {
     }
 
     public function render_admin_view() {
+        if (isset($_GET["msg"])) {
+            switch (intval($_GET["msg"])) {
+                case 1: $this->message = __("Mitglied hinzugefügt."); break;
+            }
+        }
         $this->render('admin_view');
     }
 
     public function render_admin_add() {
         $this->render('admin_add');
+    }
+
+    public function save_member() {
+        global $wpdb;
+        $wpdb->insert(
+            $this->table_name,
+            array(
+                'firstname' => $_POST["firstname"],
+                'lastname' => $_POST["lastname"],
+                'instrument' => $_POST["instrument"],
+                'register' => $_POST["register"],
+                'birthday' => $_POST["birthday"],
+                'active_since' => $_POST["active_since"],
+                'abzeichen' => $_POST["abzeichen"],
+            ),
+            array('%s', '%s', '%s', '%s', '%s', '%s', '%s')
+        );
+        wp_redirect("admin.php?page=musikcorps_members&msg=1");
+        exit();
     }
 
     public function render_admin_import() {

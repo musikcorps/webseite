@@ -27,7 +27,7 @@ class MembersListTable extends \WP_List_Table {
             'col_firstname' => __('Vorname'),
             'col_lastname' => __('Nachname'),
             'col_instrument' => __('Instrument'),
-            'col_register' => __('Register'),
+            'col_register' => __('Register', 'musikcorps'),
             'col_birthday' => __('Geburtstag'),
             'col_active_since' => __('Aktiv seit'),
             'col_abzeichen' => __('Abzeichen'),
