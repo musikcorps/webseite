@@ -249,6 +249,18 @@ class MusikcorpsPressePlugin {
     }
 
     function shortcode_birthdays() {
+        global $wpdb;
+        $tablename = $wpdb->prefix . 'mc_members';
+        $this->birthdays = $wpdb->get_results(
+                "SELECT *, ".
+                "DATE_FORMAT(birthday, '%d.%m.%Y') AS birthday_f, ".
+                "birthday + INTERVAL(YEAR(CURRENT_TIMESTAMP) - YEAR(birthday)) + 0 YEAR AS currbirthday, ".
+                "birthday + INTERVAL(YEAR(CURRENT_TIMESTAMP) - YEAR(birthday)) + 1 YEAR AS nextbirthday ".
+                "FROM $tablename ".
+                "WHERE birthday is not null AND birthday <> 0000-00-00 ".
+                "ORDER BY CASE WHEN currbirthday >= CURRENT_TIMESTAMP THEN currbirthday ELSE nextbirthday END ".
+                "LIMIT 10"
+        );
         return $this->ob_render('shortcode_birthdays');
     }
 

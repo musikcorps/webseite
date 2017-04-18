@@ -1,3 +1,6 @@
-<p>
-    Geburtstage sind verfügbar, sobald Mitgliederdaten in Wordpress gespeichert werden.
-</p>
+<h3>Nächste Geburtstage:</h3>
+<ul>
+    <?php foreach ($this->birthdays as $b): ?>
+        <li><?= "$b->birthday_f: $b->firstname $b->lastname" ?></li>
+    <?php endforeach ?>
+</ul>
