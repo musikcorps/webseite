@@ -23,27 +23,27 @@ class MembersListTable extends \WP_List_Table {
 
     public function get_columns() {
         return $columns = array(
-            'col_id' => __('ID'),
-            'col_firstname' => __('Vorname'),
-            'col_lastname' => __('Nachname'),
-            'col_instrument' => __('Instrument'),
-            'col_register' => __('Register', 'musikcorps'),
-            'col_birthday' => __('Geburtstag'),
-            'col_active_since' => __('Aktiv seit'),
-            'col_abzeichen' => __('Abzeichen'),
+            'id' => __('ID'),
+            'firstname' => __('Vorname'),
+            'lastname' => __('Nachname'),
+            'instrument' => __('Instrument'),
+            'register' => __('Register', 'musikcorps'),
+            'birthday' => __('Geburtstag'),
+            'active_since' => __('Aktiv seit'),
+            'abzeichen' => __('Abzeichen'),
         );
     }
 
     public function get_sortable_columns() {
         return $sortable = array(
-            'col_id' => 'id',
-            'col_firstname' => 'firstname',
-            'col_lastname' => 'lastname',
-            'col_instrument' => 'instrument',
-            'col_register' => 'register',
-            'col_birthday' => 'birthday',
-            'col_active_since' => 'active_since',
-            'col_abzeichen' => 'abzeichen',
+            'id' => array('id', true),
+            'firstname' => array('firstname', true),
+            'lastname' => array('lastname', true),
+            'instrument' => array('instrument', true),
+            'register' => array('register', true),
+            'birthday' => array('birthday', true),
+            'active_since' => array('active_since', true),
+            'abzeichen' => array('abzeichen', true),
         );
     }
 
@@ -87,14 +87,14 @@ class MembersListTable extends \WP_List_Table {
                     $attributes = $class . $style;
                     $editlink  = 'admin.php?page=musikcorps_members&id='.$rec["id"];
                     switch ($column_name) {
-                        case "col_id":  echo '<td '.$attributes.'>'.stripslashes($rec["id"]).'</td>'; break;
-                        case "col_firstname": echo '<td '.$attributes.'><a href="'.$editlink.'">'.stripslashes($rec["firstname"]).'</a></td>'; break;
-                        case "col_lastname": echo '<td '.$attributes.'><a href="'.$editlink.'">'.stripslashes($rec["lastname"]).'</a></td>'; break;
-                        case "col_instrument": echo '<td '.$attributes.'>'.stripslashes($rec["instrument"]).'</td>'; break;
-                        case "col_register": echo '<td '.$attributes.'>'.stripslashes($rec["register"]).'</td>'; break;
-                        case "col_birthday": echo '<td '.$attributes.'>'.stripslashes($rec["birthday"]).'</td>'; break;
-                        case "col_active_since": echo '<td '.$attributes.'>'.stripslashes($rec["active_since"]).'</td>'; break;
-                        case "col_abzeichen": echo '<td '.$attributes.'>'.stripslashes($rec["abzeichen"]).'</td>'; break;
+                        case "id":  echo '<td '.$attributes.'>'.stripslashes($rec["id"]).'</td>'; break;
+                        case "firstname": echo '<td '.$attributes.'><a href="'.$editlink.'">'.stripslashes($rec["firstname"]).'</a></td>'; break;
+                        case "lastname": echo '<td '.$attributes.'><a href="'.$editlink.'">'.stripslashes($rec["lastname"]).'</a></td>'; break;
+                        case "instrument": echo '<td '.$attributes.'>'.stripslashes($rec["instrument"]).'</td>'; break;
+                        case "register": echo '<td '.$attributes.'>'.stripslashes($rec["register"]).'</td>'; break;
+                        case "birthday": echo '<td '.$attributes.'>'.stripslashes($rec["birthday"]).'</td>'; break;
+                        case "active_since": echo '<td '.$attributes.'>'.stripslashes($rec["active_since"]).'</td>'; break;
+                        case "abzeichen": echo '<td '.$attributes.'>'.stripslashes($rec["abzeichen"]).'</td>'; break;
                     }
                 }
                 echo'</tr>';
