@@ -5,7 +5,7 @@ Plugin URI:   https://github.com/musikcorps/webseite
 Description:  Removes comments and its settings from the admin area as they are not used
 Version:      1.0.0
 Author:       Johannes Lauinger
-Author URI:   https://lauinger-it.de/
+Author URI:   https://johannes-lauinger.de/
 License:      MIT License
 */
 

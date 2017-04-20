@@ -1,5 +1,21 @@
 {
+  "name": "musikcorps-2019",
+  "description": "Musikcorps Niedernberg e.V. website theme",
+  "main": "",
+  "authors": [
+    "Johannes Lauinger <johannes@lauinger-it.de>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/musikcorps/webseite",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
   "dependencies": {
-    "bootstrap": "git://github.com/twbs/bootstrap.git#v4.0.0-alpha.4"
+    "foundation": "^5.5.3"
   }
 }
