@@ -24,7 +24,6 @@ class MusikcorpsMembersPlugin {
         $this->check_and_init_db();
         add_action('admin_menu', array($this, 'register_admin_view'));
         add_action('admin_post_musikcorps_save_member', array($this, 'save_member'));
-        add_shortcode('mitglieder', array($this, 'shortcode_members'));
     }
 
     private function render($template) {
@@ -49,8 +48,7 @@ class MusikcorpsMembersPlugin {
                 instrument varchar(256) NULL,
                 register varchar(256) NULL,
                 birthday date NULL,
-                active_since date NULL,
-                abzeichen varchar(4096) NULL,
+                email varchar(512) NULL,
         		PRIMARY KEY id (id)
       	) $charset_collate;";
       	require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
@@ -119,11 +117,10 @@ class MusikcorpsMembersPlugin {
                     'instrument' => $_POST["instrument"],
                     'register' => $_POST["register"],
                     'birthday' => $_POST["birthday"],
-                    'active_since' => $_POST["active_since"],
-                    'abzeichen' => $_POST["abzeichen"],
+                    'email' => $_POST["email"],
                 ),
                 array('id' => $_POST["id"]),
-                array('%s', '%s', '%s', '%s', '%s', '%s', '%s'),
+                array('%s', '%s', '%s', '%s', '%s', '%s'),
                 array('%d')
             );
             wp_redirect("admin.php?page=musikcorps_members&msg=2");
@@ -137,10 +134,9 @@ class MusikcorpsMembersPlugin {
                     'instrument' => $_POST["instrument"],
                     'register' => $_POST["register"],
                     'birthday' => $_POST["birthday"],
-                    'active_since' => $_POST["active_since"],
-                    'abzeichen' => $_POST["abzeichen"],
+                    'email' => $_POST["email"],
                 ),
-                array('%s', '%s', '%s', '%s', '%s', '%s', '%s')
+                array('%s', '%s', '%s', '%s', '%s', '%s')
             );
             wp_redirect("admin.php?page=musikcorps_members&msg=1");
             exit();
@@ -160,12 +156,6 @@ class MusikcorpsMembersPlugin {
 
     public function render_admin_import() {
         $this->render('admin_import');
-    }
-
-    public function shortcode_members() {
-        global $wpdb;
-        $this->items = $wpdb->get_results("SELECT * FROM $this->table_name ORDER BY firstname asc");
-        $this->render('shortcode_members');
     }
 }
 

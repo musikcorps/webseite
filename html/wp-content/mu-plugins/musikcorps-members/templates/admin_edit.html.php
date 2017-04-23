@@ -27,12 +27,8 @@
                 <td><input type="text" name="birthday" id="birthday" value="<?= $this->item->birthday ?>" class="ss-field-width" placeholder="YYYY-MM-DD" /></td>
             </tr>
             <tr>
-                <th class="ss-th-width"><label for="active_since"><?= __('Aktiv seit') ?></label></th>
-                <td><input type="text" name="active_since" id="active_since" value="<?= $this->item->active_since ?>" class="ss-field-width" placeholder="YYYY-MM-DD" /></td>
-            </tr>
-            <tr>
-                <th class="ss-th-width"><label for="abzeichen"><?= __('Abzeichen') ?></label></th>
-                <td><input type="text" name="abzeichen" id="abzeichen" value="<?= $this->item->abzeichen ?>" class="ss-field-width" /></td>
+                <th class="ss-th-width"><label for="email"><?= __('E-Mail') ?></label></th>
+                <td><input type="text" name="email" id="email" value="<?= $this->item->email ?>" class="ss-field-width" /></td>
             </tr>
         </table>
         <p></p>

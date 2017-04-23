@@ -29,8 +29,7 @@ class MembersListTable extends \WP_List_Table {
             'instrument' => __('Instrument'),
             'register' => __('Register', 'musikcorps'),
             'birthday' => __('Geburtstag'),
-            'active_since' => __('Aktiv seit'),
-            'abzeichen' => __('Abzeichen'),
+            'email' => __('E-Mail'),
         );
     }
 
@@ -42,8 +41,7 @@ class MembersListTable extends \WP_List_Table {
             'instrument' => array('instrument', true),
             'register' => array('register', true),
             'birthday' => array('birthday', true),
-            'active_since' => array('active_since', true),
-            'abzeichen' => array('abzeichen', true),
+            'email' => array('email', true),
         );
     }
 
@@ -57,14 +55,12 @@ class MembersListTable extends \WP_List_Table {
 
         $this->_column_headers = array($columns, $hidden, $sortable);
 
-        //$this->process_bulk_action();
-
         $total_items = $wpdb->get_var("SELECT COUNT(id) FROM $this->table_name");
 
         $paged = isset($_REQUEST['paged']) ? max(0, intval($_REQUEST['paged']) - 1) : 0;
         $orderby = (isset($_REQUEST['orderby']) && in_array($_REQUEST['orderby'], array_keys($this->get_sortable_columns()))) ? $_REQUEST['orderby'] : 'firstname';
         $order = (isset($_REQUEST['order']) && in_array($_REQUEST['order'], array('asc', 'desc'))) ? $_REQUEST['order'] : 'asc';
-        $this->items = $wpdb->get_results($wpdb->prepare("SELECT *, DATE_FORMAT(birthday, '%%d.%%m.%%Y') AS birthday_f, DATE_FORMAT(active_since, '%%d.%%m.%%Y') AS active_since_f FROM $this->table_name ORDER BY $orderby $order LIMIT %d OFFSET %d", $per_page, $paged), ARRAY_A);
+        $this->items = $wpdb->get_results($wpdb->prepare("SELECT *, DATE_FORMAT(birthday, '%%d.%%m.%%Y') AS birthday_f FROM $this->table_name ORDER BY $orderby $order LIMIT %d OFFSET %d", $per_page, $paged), ARRAY_A);
 
         $this->set_pagination_args(array(
             'total_items'   => $total_items,
@@ -92,8 +88,7 @@ class MembersListTable extends \WP_List_Table {
                         case "instrument": echo '<td '.$attributes.'>'.stripslashes($rec["instrument"]).'</td>'; break;
                         case "register": echo '<td '.$attributes.'>'.stripslashes($rec["register"]).'</td>'; break;
                         case "birthday": echo '<td '.$attributes.'>'.stripslashes($rec["birthday_f"]).'</td>'; break;
-                        case "active_since": echo '<td '.$attributes.'>'.stripslashes($rec["active_since_f"]).'</td>'; break;
-                        case "abzeichen": echo '<td '.$attributes.'>'.stripslashes($rec["abzeichen"]).'</td>'; break;
+                        case "email": echo '<td '.$attributes.'>'.stripslashes($rec["email"]).'</td>'; break;
                     }
                 }
                 echo'</tr>';
