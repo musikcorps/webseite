@@ -22,6 +22,9 @@
     },
     "foundation.js": {
       "bower": ["foundation"]
+    },
+    "images": {
+      "files": ["images/**/*"]
     }
   }
 }
