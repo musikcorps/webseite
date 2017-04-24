@@ -1,0 +1,18 @@
+.post-type-archive-musikcorps_presse {
+
+  .page-header, time, .author {
+    display: none;
+  }
+
+  article:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+
+  article header {
+    margin-bottom: 1rem;
+  }
+
+  article h2 a {
+    font-size: 2rem;
+  }
+}

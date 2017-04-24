@@ -1,10 +1,16 @@
 // Grid settings
 $enable-flex:           true;
 $main-sm-columns:       12;
-$sidebar-sm-columns:    4;
+$sidebar-sm-columns:    3;
 
 // Colors
-$brand-primary:         #27ae60;
+$brand-light:           #81acda;
+$brand-dark:            #313e66;
+$subnav-hover:          #474f66;
+$footer-text:           #777777;
+$footer-bg:             #f0f0f0;
+$link:                  darken($brand-light, 20%);
+$link-hover:            darken($brand-light, 35%);
 
 // misc
 $spacer:                1rem;

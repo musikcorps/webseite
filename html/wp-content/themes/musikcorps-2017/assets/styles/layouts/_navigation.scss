@@ -18,7 +18,7 @@
 }
 .primary-nav a:hover, .primary-nav li:hover a,
 .primary-nav li.current_page_item a, .primary-nav li.current_page_parent a {
-  background-color: #232c49;
+  background-color: $brand-dark;
   color: white;
 }
 
@@ -40,11 +40,11 @@
 }
 .primary-nav .sub-menu a {
   padding: .4rem 1rem;
-  background-color: #232c49;
+  background-color: $brand-dark;
   color: white;
   width: 270px;
   display: inline-block;
 }
 .primary-nav .sub-menu a:hover, .primary-nav .sub-menu li.current_page_item a {
-  background-color: #474f66;
+  background-color: $subnav-hover;
 }

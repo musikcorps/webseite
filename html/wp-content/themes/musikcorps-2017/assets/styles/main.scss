@@ -5,13 +5,14 @@
 
 @import "common/global";
 
-@import "components/wp-classes";
-@import "components/events-sidebar";
-@import "components/events-page";
-
 @import "layouts/header";
 @import "layouts/footer";
 @import "layouts/navigation";
 @import "layouts/sidebar";
 @import "layouts/pages";
 @import "layouts/tinymce";
+
+@import "components/wp-classes";
+@import "components/events-sidebar";
+@import "components/events-page";
+@import "components/archive_presse";

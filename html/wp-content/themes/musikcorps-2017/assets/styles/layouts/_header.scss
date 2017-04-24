@@ -15,7 +15,7 @@ header.frontpage::before {
   opacity: 1;
 }
 header.standard-page {
-  background-color: #81acda;
+  background-color: $brand-light;
 }
 header.frontpage {
   position: relative;
