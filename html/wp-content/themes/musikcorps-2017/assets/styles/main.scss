@@ -4,10 +4,14 @@
 @import "../../bower_components/foundation/css/foundation.css";
 
 @import "common/global";
+
 @import "components/wp-classes";
+@import "components/events-sidebar";
+@import "components/events-page";
+
 @import "layouts/header";
-@import "layouts/sidebar";
 @import "layouts/footer";
+@import "layouts/navigation";
+@import "layouts/sidebar";
 @import "layouts/pages";
-@import "layouts/posts";
 @import "layouts/tinymce";

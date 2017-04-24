@@ -1,0 +1,30 @@
+.widget_event_list_widget ul {
+  list-style-type: none;
+  margin: 0;
+}
+
+.widget_event_list_widget li:not(:first-child) {
+  padding-top: 0.2rem;
+}
+
+.widget_event_list_widget .event-weekday {
+  display: none !important;
+}
+
+.widget_event_list_widget .event-list .start-date,
+.widget_event_list_widget .event-list .end-date {
+
+  display: inline-block;
+  font-size: .8rem;
+
+  div {
+    display: inline;
+    padding: 0 .2rem 0 0;
+  }
+}
+
+.widget_event_list_widget .event-list .start-date::after{
+  content: "-";
+  display: inline;
+  padding: 0 .2rem;
+}
