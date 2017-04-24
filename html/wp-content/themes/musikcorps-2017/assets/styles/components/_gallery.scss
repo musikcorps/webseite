@@ -8,13 +8,49 @@
   .top_navigator .raquo:nth-of-type(1) {
     display: none;
   }
-
   .top_navigator a:nth-of-type(2)::before {
     content: "";
     display: block;
   }
 
   .folder {
+    display: none;
+  }
+  .thumb_images {
+    margin-top: 2rem;
+  }
+
+  .lazyest_image {
+    padding: 1rem 0;
+  }
+  .lazyest_image .caption {
+    margin-top: 1rem;
+  }
+  
+  .lazyest_navigator {
+    text-align: center;
+    margin-top: 2rem;
+  }
+  .lazyest_navigator .tablenav-pages {
+    float: none;
+  }
+  .lazyest_navigator br[style] {
+    display: none;
+  }
+
+  .lazyest_navigator .tablenav-pages a {
+    border: 1px solid $brand-light;
+    background-color: $brand-light;
+    border-radius: 3px;
+    color: white;
+    font-size: 1.5rem;
+    padding: .3rem 2rem;
+  }
+  .lazyest_navigator .tablenav-pages a:first-child {
+    margin-right: 2rem;
+  }
+
+  &.slide .folder_description {
     display: none;
   }
 }
