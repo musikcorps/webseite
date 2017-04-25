@@ -30,6 +30,16 @@ header.mobile {
     text-align: center;
     padding-top: 10px;
   }
+
+  ul {
+    margin: 0;
+  }
+  li {
+    list-style-type: none;
+  }
+  ul ul a {
+    padding-left: 2rem;
+  }
 }
 
 header.frontpage.mobile.callout {
