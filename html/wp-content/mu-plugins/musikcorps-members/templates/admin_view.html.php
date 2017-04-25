@@ -8,6 +8,7 @@ $table->prepare_items();
 <div class="wrap">
     <h1 class="wp-heading-inline"><?= __('Mitglieder', 'musikcorps') ?></h1>
     <a href="admin.php?page=musikcorps_members_add" class="page-title-action">Erstellen</a>
+    <a href="admin.php?page=musikcorps_members_import" class="page-title-action">Importieren</a>
 
     <?php if (isset($this->message)): ?><div class="success"><p><?php echo $this->message; ?></p></div><?php endif; ?>
 
