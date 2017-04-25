@@ -7,7 +7,7 @@ $table->prepare_items();
 
 <div class="wrap">
     <h1 class="wp-heading-inline"><?= __('Mitglieder', 'musikcorps') ?></h1>
-    <a href="#" class="page-title-action">Erstellen</a>
+    <a href="admin.php?page=musikcorps_members_add" class="page-title-action">Erstellen</a>
 
     <?php if (isset($this->message)): ?><div class="success"><p><?php echo $this->message; ?></p></div><?php endif; ?>
 
