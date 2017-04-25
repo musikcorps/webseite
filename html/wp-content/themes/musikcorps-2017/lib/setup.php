@@ -18,15 +18,9 @@ function setup() {
         'primary_navigation' => __('Primary Navigation', 'sage')
     ]);
 
-    // Enable post thumbnails
-    // http://codex.wordpress.org/Post_Thumbnails
-    // http://codex.wordpress.org/Function_Reference/set_post_thumbnail_size
-    // http://codex.wordpress.org/Function_Reference/add_image_size
-    add_theme_support('post-thumbnails');
-
     // Enable HTML5 markup support
     // http://codex.wordpress.org/Function_Reference/add_theme_support#HTML5
-    add_theme_support('html5', ['caption', 'comment-form', 'comment-list', 'gallery', 'search-form']);
+    add_theme_support('html5', ['caption', 'gallery', 'search-form']);
 
     // Use main stylesheet for visual editor
     // To add custom styles edit /assets/styles/layouts/_tinymce.scss
