@@ -1,0 +1,37 @@
+header.mobile {
+
+  .sidebar-primary .content main {
+    margin-bottom: 1rem;
+  }
+
+  .tab-bar {
+    margin-bottom: 1rem;
+    background-color: $brand-light;
+  }
+
+  .tab-bar .left-small, .tab-bar .right-small {
+    border-right-color: $brand-dark;
+  }
+
+  .tab-bar .logo {
+    padding: .5rem;
+    text-align: center;
+  }
+  .tab-bar .logo img {
+    height: 30px;
+    vertical-align: top;
+  }
+
+  .main-menu-label {
+    height: 45px;
+    //background-color: $brand-light;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 10px;
+  }
+}
+
+header.frontpage.mobile.callout {
+  margin: -1rem 0 1rem 0;
+}
