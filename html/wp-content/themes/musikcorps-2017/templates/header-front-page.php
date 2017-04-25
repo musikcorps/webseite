@@ -1,4 +1,4 @@
-<header class="frontpage show-for-large-up">
+<header class="frontpage show-for-large-up desktop">
 
     <div class="header-vspacer row">
         <div class="header-content">
@@ -22,4 +22,9 @@
         </div>
     </div>
 
+</header>
+
+
+<header class="frontpage hide-for-large-up mobile callout">
+    <img src="<?= get_template_directory_uri(); ?>/dist/images/front-page-background.jpg" />
 </header>

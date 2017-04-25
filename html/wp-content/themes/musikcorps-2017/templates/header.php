@@ -1,4 +1,4 @@
-<header class="standard-page">
+<header class="standard-page show-for-large-up desktop">
     <div class="row">
 
         <div class="link-homepage">
