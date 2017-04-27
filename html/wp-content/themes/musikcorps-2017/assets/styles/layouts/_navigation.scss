@@ -20,7 +20,7 @@ header.desktop {
     color: black;
   }
   .primary-nav a:hover, .primary-nav li:hover a,
-  .primary-nav li.current_page_item a, .primary-nav li.current_page_parent a {
+  .primary-nav li.current-menu-item a, .primary-nav li.current-menu-parent a {
     background-color: $brand-dark;
     color: white;
   }

@@ -30,14 +30,16 @@ header.mobile {
     padding-top: 10px;
   }
 
-  ul {
-    margin: 0;
-  }
-  li {
-    list-style-type: none;
-  }
-  ul ul a {
-    padding-left: 2rem;
+  .left-off-canvas-menu {
+    ul {
+      margin: 0;
+    }
+    li {
+      list-style-type: none;
+    }
+    ul ul a {
+      padding-left: 2rem;
+    }
   }
 }
 

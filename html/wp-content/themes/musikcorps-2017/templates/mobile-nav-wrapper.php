@@ -14,7 +14,9 @@ use Roots\Sage\Wrapper;
                     <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
                 </section>
                 <section class="middle tab-bar-section">
-                    <h1 class="title">Musikcorps Niedernberg</h1>
+                    <a href="<?= esc_url(home_url('/')); ?>">
+                        <h1 class="title brand"><?php bloginfo('name'); ?></h1>
+                    </a>
                 </section>
                 <section class="right-small logo">
                     <img src="<?= get_template_directory_uri(); ?>/dist/images/logo.png" />

@@ -4,7 +4,7 @@
         <div class="link-homepage">
             <a href="<?= esc_url(home_url('/')); ?>">
                 <img src="<?= get_template_directory_uri(); ?>/dist/images/logo.png" />
-                <h1><?php bloginfo('name'); ?></h1>
+                <h1 class="brand"><?php bloginfo('name'); ?></h1>
             </a>
         </div>
 
