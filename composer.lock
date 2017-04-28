@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e09aae094d18a102b084bc98eb57d206",
+    "content-hash": "6f4399c53a8de7f500d707b649fc2a0a",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -2091,26 +2091,6 @@
                 "wordpress"
             ],
             "time": "2016-10-25T15:14:00+00:00"
-        },
-        {
-            "name": "wpackagist-plugin/event-list",
-            "version": "0.7.8",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/event-list/",
-                "reference": "tags/0.7.8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/event-list.0.7.8.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/event-list/"
         },
         {
             "name": "wpackagist-plugin/google-calendar-events",
