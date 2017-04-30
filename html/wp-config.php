@@ -85,9 +85,10 @@ define('WP_AUTO_ACTIVATE_PLUGINS', 'event-list,lazyest-gallery');
  * It is strongly recommended that plugin and theme developers use WP_DEBUG
  * in their development environments.
  */
-define('WP_DEBUG', false);
-define('WP_DEBUG_DISPLAY', false);
-define('SCRIPT_DEBUG', false);
+$debug = getenv('DEBUG') ? getenv('DEBUG') : false;
+define('WP_DEBUG', $debug);
+define('WP_DEBUG_DISPLAY', $debug);
+define('SCRIPT_DEBUG', $debug);
 
 /**
  * Log error data but don't show it in the frontend.
