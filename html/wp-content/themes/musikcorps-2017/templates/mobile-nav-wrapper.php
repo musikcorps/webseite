@@ -19,7 +19,11 @@ use Roots\Sage\Wrapper;
                     </a>
                 </section>
                 <section class="right-small logo">
-                    <img src="<?= get_template_directory_uri(); ?>/dist/images/logo.png" />
+                    <?php if (!has_custom_logo()): ?>
+                        <img src="<?= get_template_directory_uri(); ?>/dist/images/logo.png" />
+                    <?php else: ?>
+                        <?php the_custom_logo() ?>
+                    <?php endif ?>
                 </section>
             </nav>
 

@@ -25,6 +25,31 @@ function setup() {
     // Use main stylesheet for visual editor
     // To add custom styles edit /assets/styles/layouts/_tinymce.scss
     add_editor_style(Assets\asset_path('styles/main.css'));
+
+    // Allow for uploading a custom header background image
+    add_theme_support('custom-header', [
+        'uploads' => true,
+        'default-image' => Assets\asset_path('images/front-page-background.jpg'),
+        'header-text' => false,
+        'width'       => 1920,
+        'height'      => 950,
+        'flex-height' => true,
+    ]);
+    $header_images = array(
+        'musikcorps' => array(
+            'url'           => Assets\asset_path('images/front-page-background.jpg'),
+            'thumbnail_url' => Assets\asset_path('images/front-page-background.jpg'),
+            'description'   => 'Musikcorps Gruppenfoto',
+        ),
+    );
+    register_default_headers($header_images);
+
+    // Allow for uploading a custom logo image
+    add_theme_support('custom-logo', [
+        'default-image' => Assets\asset_path('images/logo.png'),
+        'width'       => 400,
+        'height'      => 500,
+    ]);
 }
 add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
 

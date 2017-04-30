@@ -5,7 +5,11 @@
 
             <div class="link-homepage">
                 <a href="<?= esc_url(home_url('/')); ?>">
-                    <img src="<?= get_template_directory_uri(); ?>/dist/images/logo.png" />
+                    <?php if (!has_custom_logo()): ?>
+                        <img src="<?= get_template_directory_uri(); ?>/dist/images/logo.png" />
+                    <?php else: ?>
+                        <?php the_custom_logo() ?>
+                    <?php endif ?>
                     <h1 class="brand"><?php bloginfo('name'); ?></h1>
                 </a>
             </div>
@@ -26,5 +30,11 @@
 
 
 <header class="frontpage hide-for-large-up mobile callout">
-    <img src="<?= get_template_directory_uri(); ?>/dist/images/front-page-background.jpg" />
+    <img src="<?= header_image() ?>" />
 </header>
+
+<style>
+    header.desktop.frontpage::before {
+        background-image: url(<?= header_image() ?>);
+    }
+</style>
