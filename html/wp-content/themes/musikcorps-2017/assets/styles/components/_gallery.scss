@@ -20,6 +20,18 @@
     margin-top: 2rem;
   }
 
+  .lgf-item {
+    margin-bottom: 1.5rem;
+  }
+
+  .lg_folder_thumb_image {
+    height: 130px !important;
+  }
+
+  .lg_thumb {
+    text-align: center;
+  }
+
   .lazyest_image {
     padding: 1rem 0;
   }
@@ -52,5 +64,13 @@
 
   &.slide .folder_description {
     display: none;
+  }
+
+  .tablenav-pages::after {
+    content: "Sie können auch mit den Pfeiltasten blättern.";
+    display: block;
+    margin-top: 2rem;
+    color: $footer-text;
+    font-size: .8rem;
   }
 }
