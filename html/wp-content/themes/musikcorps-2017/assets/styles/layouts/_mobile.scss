@@ -14,11 +14,11 @@ header.mobile {
 
   .tab-bar {
     margin-bottom: 1rem;
-    background-color: $brand-light;
+    background-color: $brand-dark;
   }
 
   .tab-bar .left-small, .tab-bar .right-small {
-    border-right-color: $brand-dark;
+    border-right-color: $brand-light;
   }
 
   .tab-bar .logo {
