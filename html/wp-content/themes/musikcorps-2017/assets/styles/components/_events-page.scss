@@ -1,49 +1,6 @@
-.event-list .filterbar {
-  display: none;
-}
+.simcal-calendar {
 
-.event-list li:not(:first-child) {
-  margin: 2rem 0;
-}
-
-.event-list .event-weekday {
-  display: none !important;
-}
-
-.event-list .event-time {
-  margin-right: .5rem;
-}
-.event-list .event-time::after {
-  content: "Uhr";
-  padding-left: .3rem;
-}
-
-.event-list .event-location {
-  display: block;
-}
-
-.event-list .start-date,
-.event-list .end-date {
-
-  display: inline-block;
-  font-size: 1rem;
-  color: $brand-light;
-  font-weight: bold;
-
-  div {
-    display: inline;
-    padding: 0 .2rem 0 0;
+  .simcal-align-right {
+    display: none;
   }
-}
-
-.event-list .start-date::after{
-  content: "-";
-  display: inline;
-  padding: 0 .2rem;
-}
-
-.event-list a {
-  pointer-events: none;
-  cursor: default;
-  color: black;
 }
