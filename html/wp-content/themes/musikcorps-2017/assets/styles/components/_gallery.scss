@@ -38,12 +38,17 @@
   .lazyest_image .caption {
     margin-top: 1rem;
   }
+
+  .image_pagination {
+    text-align: center;
+  }
   
-  .lazyest_navigator {
+  .lazyest_navigator, .image_pagination {
     text-align: center;
     margin-top: 2rem;
   }
-  .lazyest_navigator .tablenav-pages {
+  .lazyest_navigator .tablenav-pages,
+  .image_pagination .tablenav-pages {
     float: none;
   }
   .lazyest_navigator br[style] {
@@ -66,11 +71,27 @@
     display: none;
   }
 
-  .tablenav-pages::after {
+  .lazyest_navigator .tablenav-pages::after {
     content: "Sie können auch mit den Pfeiltasten blättern.";
     display: block;
     margin-top: 2rem;
     color: $footer-text;
     font-size: .8rem;
+  }
+
+  .image_pagination input {
+    display: inline;
+    width: 2.5rem;
+    text-align: center;
+  }
+
+  .image_pagination .tablenav-pages a {
+    border: 1px solid $brand-light;
+    background-color: $brand-light;
+    border-radius: 3px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: normal;
+    padding: .3rem .5rem;
   }
 }
