@@ -28,5 +28,4 @@ get_template_part(is_front_page() ? 'templates/header-front-page' : 'templates/h
 <?php
 do_action('get_footer');
 get_template_part('templates/footer');
-wp_footer();
 ?>
