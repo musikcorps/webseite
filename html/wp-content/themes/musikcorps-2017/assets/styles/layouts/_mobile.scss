@@ -48,6 +48,10 @@ header.mobile {
     ul ul a {
       padding-left: 2rem;
     }
+
+    ul.off-canvas-list > li > a {
+      font-weight: bold;
+    }
   }
 }
 
