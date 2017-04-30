@@ -3,6 +3,7 @@ html/wp-content/plugins/
 html/wp-content/languages/
 html/wp-content/uploads/
 html/wp-content/upgrade/
+
 html/wp-content/lg-gallery/*
 !html/wp-content/lg-gallery/.gitkeep
 

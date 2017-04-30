@@ -5,7 +5,6 @@
     // kick off Foundation
     $(document).foundation();
 
-
     $(function() {
         // only fire on gallery slide page
         if($('.lg_gallery.slide').length === 0) return;
