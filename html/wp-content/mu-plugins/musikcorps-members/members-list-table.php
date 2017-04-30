@@ -74,7 +74,7 @@ class MembersListTable extends \WP_List_Table {
         list($columns, $hidden) = $this->get_column_info();
         if (!empty($records)) {
             foreach ($records as $rec) {
-                echo '<tr id="record_'.$rec->id.'">';
+                echo '<tr id="record_'.$rec["id"].'">';
                 foreach ($columns as $column_name => $column_display_name) {
                     $class = "class='$column_name column-$column_name'";
                     $style = "";
