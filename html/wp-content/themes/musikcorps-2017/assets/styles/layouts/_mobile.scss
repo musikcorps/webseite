@@ -4,6 +4,10 @@
 
 header.mobile {
 
+  .off-canvas-wrap .inner-wrap {
+    min-height: 100vh;
+  }
+
   .sidebar-primary .content main {
     margin-bottom: 1rem;
   }
