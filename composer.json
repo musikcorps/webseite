@@ -11,12 +11,8 @@
     "psr-0": {"WordPress\\Installer": "script"}
   },
   "scripts": {
-    "post-install-cmd": [
-      "WordPress\\Installer::symlinkWPContent"
-    ],
-    "post-update-cmd": [
-      "WordPress\\Installer::symlinkWPContent"
-    ]
+    "post-install-cmd": ["WordPress\\Installer::symlinkWPContent"],
+    "post-update-cmd": ["WordPress\\Installer::symlinkWPContent"]
   },
   "repositories": [
     {

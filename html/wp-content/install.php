@@ -34,7 +34,10 @@ function wp_install( $blog_title, $user_name, $user_email, $public, $deprecated 
     /*
      * Fix problem with installation of lazyest-gallery, which fails if this option is not yet set
      */
-    update_option('lazyest-gallery', []);
+    update_option('lazyest-gallery', [
+        'gallery_folder' => '../wp-content/lg-gallery/',
+        'gallery_id' => 1,
+    ]);
 
 
     /* General settings */
