@@ -15,4 +15,8 @@
   ul.simcal-events {
     margin: 0;
   }
+
+  .simcal-default-calendar-list .simcal-event-details {
+    overflow: visible !important;
+  }
 }
