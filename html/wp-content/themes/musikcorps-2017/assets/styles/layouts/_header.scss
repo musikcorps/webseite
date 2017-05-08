@@ -9,13 +9,13 @@ header.desktop {
     left: 0;
     width: 100%;
     height: 100%;
-    min-height: 500px;
+    min-height: 530px;
     z-index: -1;
     padding: 1rem 0;
     background-image: url(../images/front-page-background.jpg);
     background-repeat: no-repeat;
     background-size: 100% auto;
-    background-position: 0 45%;
+    background-position: 0 75%;
     opacity: 1;
   }
   &.standard-page {
@@ -24,11 +24,11 @@ header.desktop {
   &.frontpage {
     position: relative;
     z-index: 1;
-    min-height: 500px;
+    min-height: 530px;
   }
 
   .header-vspacer {
-    padding-top: 335px;
+    padding-top: 355px;
   }
   .header-content {
     background-color: rgba(255, 255, 255, 0.8);
