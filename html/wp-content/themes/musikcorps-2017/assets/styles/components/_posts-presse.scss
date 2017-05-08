@@ -8,3 +8,17 @@
     display: none;
   }
 }
+
+.posts-navigation {
+
+  text-align: center;
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  .nav-links div {
+    display: inline-block;
+    padding: 0 0.7rem;
+  }
+}
