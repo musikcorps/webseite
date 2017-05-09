@@ -85,7 +85,7 @@ define('WP_AUTO_ACTIVATE_PLUGINS', 'google-calendar-events,lazyest-gallery');
  * It is strongly recommended that plugin and theme developers use WP_DEBUG
  * in their development environments.
  */
-$debug = getenv('DEBUG') ? getenv('DEBUG') : false;
+$debug = getenv('DEBUG') === false ? false : getenv('DEBUG') === "true";
 define('WP_DEBUG', $debug);
 define('WP_DEBUG_DISPLAY', $debug);
 define('SCRIPT_DEBUG', $debug);
