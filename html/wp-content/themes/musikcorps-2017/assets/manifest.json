@@ -1,12 +1,12 @@
 {
   "dependencies": {
-    "main.js": {
+    "main.min.js": {
       "files": [
         "scripts/main.js"
       ],
       "main": true
     },
-    "main.css": {
+    "main.min.css": {
       "files": [
         "styles/main.scss"
       ],
@@ -17,10 +17,10 @@
         "scripts/customizer.js"
       ]
     },
-    "jquery.js": {
+    "jquery.min.js": {
       "bower": ["jquery"]
     },
-    "foundation.js": {
+    "foundation.min.js": {
       "bower": ["foundation"]
     },
     "images": {
