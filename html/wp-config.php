@@ -76,7 +76,7 @@ define('DISALLOW_FILE_EDIT', true); /* this disables the theme/plugin file edito
  * Auto activated plugins
  * These plugins will be activated automatically when this is installed
  */
-define('WP_AUTO_ACTIVATE_PLUGINS', 'google-calendar-events,lazyest-gallery');
+define('WP_AUTO_ACTIVATE_PLUGINS', 'google-calendar-events');
 
 /**
  * For developers: WordPress debugging mode.
